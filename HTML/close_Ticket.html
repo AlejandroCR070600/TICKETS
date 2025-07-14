@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../CSS/close_tickets.css">
+  <title>Socket.IO Cliente con Botón</title>
+  <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      
+</head>
+
+<body class="bg-secondary">
+    <section class="container-fluid " style="height: 100%" >
+        <article class="row border " style="height: 100%;">
+            <aside class="container-fluid  col-md-3 bg-white ">
+                <div id="showTicket" class="d-flex flex-column" >
+                    
+                  
+                    <article class=" d-flex flex-column text-center  justify-content-center my-2">
+                        <h2 class="rounded-2 bg-danger bg-gradiant  text-white shadow">TICKET ABIERTO</h2>
+                        
+                    </article>
+                    <div class="rounded-2 border border-3 border-danger bg-gradiant p-2  shadow">
+                        <article class=" d-flex justify-content-center">
+                            <h3 id="sucursalAside"></h3>
+                        </article>
+                        <article class="d-flex ">
+                        <h5 class="">FOLIO: </h5>
+                        <p class="" id="folioAside"></p>
+                    </article>
+                    <article class="d-flex   ">
+                        <h5 class="">FECHA: </h5>
+                        <p class="" id="fechaAside"></p>
+                    </article>
+                    <article class="d-flex   ">
+                        <h5 class="">PERSONA: </h5>
+                        <p class="" id="usuarioAside"></p>
+                    </article>
+                  <article class="d-flex   ">
+                        <h5 class="">TELEFONO: </h5>
+                        <p class="" id="telefonoAside"></p>
+                  </article>
+                    <article class="d-flex   ">
+                        <h5 class="">IP: </h5>
+                        <p class="" id="ipEquipoAside"></p>
+                    </article>
+                    <article class="d-flex   ">
+                        <h5 class="">PROBLEMA: </h5>
+                        <p class="" id="problemaAside"></p>
+                    </article>
+                    <article class="d-flex flex-column   " >
+                        <h5 class="">DESCRIPCION: </h5>
+                        <div style="height: 70px; overflow-y: auto;">
+                            
+                            <p class="m" id="descripcionAside"></p>
+                        </div>
+                    </article>
+                    </div>
+                    <article class="text-center my-3">
+                        <button id="btnChange" class="btn btn-danger text-center ">CERRAR TICKET</button>
+                    </article>
+                  
+                </div>
+
+                <div id="formClose" class="d-none d-flex flex-column justify-content-around h-100">
+                  
+                   <article class="border border-danger border-3 p-3 rounded-4 shadow">
+                     <article class="row align-items-center justify-content-between">
+                        <button id="btnReturnTicket" class=" border bg-danger ms-3 rounded-5 w-auto col-md-3  shadow">
+                          <i class="fa-solid fa-arrow-left text-white"></i>
+                        </button>
+                        <h4 class="col-md-9  text-center">CERRAR TICKET</h4>
+                    </article>
+                  <form class="mb-2 p-3">
+                      
+                        <article class="d-flex flex-column justify-content-center">
+                            <input class="form-control my-2 w-100" id="falla_RealAside" type="text" placeholder="FALLA REAL">
+                            <input class="form-control my-2 w-100" id="causaAside" type="text" placeholder="CAUSA">
+                            <input class="form-control my-2 w-100"  id="recomendacionAside" type="text" placeholder="RECOMENDACION">
+                        </article>
+
+
+                    <article class="row ">
+                        <div class="d-flex justify-content-around align-items-center my-2">
+                            <label class="fw-bold">AREA</label>
+                          <select class="form-control w-75" name="" id="areaAside"><option value="1">SOPORTE</option></select>
+                        </div>
+                        <div class="container my-2">
+                        <div class="d-flex justify-content-between align-items-center" >
+                            <article class="">
+                                <label class="fw-bold">ATIENDE</label>
+                                <select class="form-control" name="" id="adminAside">
+                                    <option value="1">Nicolas Casas</option>
+                                </select>
+                            </article>
+                            <article>
+                                <label class="fw-bold">TURNO</label>
+                                <select class="form-control" name="" id="turnoAside">
+                                    <option value="MATUTINO">MATUTINO</option>
+                                    <option value="VESPERTINO">VESPERTINO</option>
+                                </select>
+                            </article>
+                        </div>
+                       
+                        
+                       </div>
+                      
+                    </article>
+                     <article>
+                        <div>
+                            <labe class="fw-bold">EQUIPO</label>
+                         <select class="form-control" name="" id="equipoAside"><option value="1">CPU</option></select>
+                        </div>
+
+                        <div class="row my-2">
+                            <article class="col-md-5">
+                                <label class="fw-bold">MODO</label>
+                                <select class="form-control " name="" id="modoAside">
+                                    <option value="2">REMOTO</option>
+                                    <option value="1">PRESENCIAL</option>
+
+                                    
+                                </select>
+                            </article>
+                     
+                            <article class="col-md-7">
+                                <label class="fw-bold">Error de sucursal</label>
+                                <select class="form-control" name="" id="error_SucursalAside">
+                                    <option value="NO">NO</option>
+                                    <option value="SI">SI</option>
+                                </select>
+                            </article>
+                      
+                        </div>
+                     </article>
+                      
+                  </form>
+                   </article>
+                   
+                  <button id="closeTicketButton" class="btn btn-danger text-center my-2">CERRAR</button>
+                  
+                </div>
+                </aside>
+
+            <article class="col-md-9 border border-warning h-100" style="overflow-y: auto;">
+                
+                 <div class="table-responsive " >
+                    <table class="table table-hover shadow ">
+                    <thead class="">
+                        <th>FOLIO</th>
+                        <th>FECHA</th>
+                        <th>SUCURSAL</th>
+                        <th>PEROSONA</th>
+                        <th>TELEFONO</th>
+                        <th>PROBLEMA</th>
+                        <th>DESCRIPCION</th>
+                        <th>IP DEL EQUIPO</th>
+                        <th>ESTATUS</th>
+                    </thead>
+                    <tbody id="tbody">
+
+                    </tbody>
+                </table>
+                </div>
+            </article>
+        </article>
+    </section>
+    <script src="../JS/close_Ticket.js"></script>
+    <script src="../JS/client_webSocket.js"></script>
+    <script src="../JS/asideLastInfo.js"></script>
+    <script src="../JS/show_Ticket.js"></script>
+    <script src="../JS/hover&click.js"></script>
+</body>
+</html>
