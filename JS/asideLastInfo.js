@@ -1,4 +1,7 @@
 
+viewAsideOpenInfo();
+
+function viewAsideOpenInfo(){
 fetch("../PHP/asideLastInfo.php",{
 
 })
@@ -23,4 +26,6 @@ fetch("../PHP/asideLastInfo.php",{
     problemaAside.textContent=data['problema'];
     ipEquipoAside.textContent=data['ip_Equipo'];
     descripcionAside.textContent=data['descripcion'];
-})
+});
+    
+}

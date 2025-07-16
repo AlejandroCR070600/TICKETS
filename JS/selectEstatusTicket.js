@@ -2,35 +2,40 @@
 let btnCerrado =document.getElementById('btnTicketCerrado');
 let btnAbierto =document.getElementById('btnTicketAbierto');
 let showTicket=document.getElementById("showTicket");
+let formClose=document.getElementById("formClose");
 let showTicketClose=document.getElementById("showTicketClose");
 
 
 btnCerrado.addEventListener("click", function(event){
    showTicket.classList.add("d-none");
+   formClose.classList.add("d-none");
   showTicketClose.classList.remove("d-none");
-    console.log("si me escucho");
+  
+    
     let opcion={
         "ESTATUS":"CERRADO"
     };
-    selecEstatus(opcion);
+    selecEstatus(opcion, click());
 
 });
 
 btnAbierto.addEventListener("click", function(event){
+  viewAsideOpenInfo();
   
   showTicket.classList.remove("d-none");
+  formClose.classList.add("d-none");
   showTicketClose.classList.add("d-none");
     console.log("si me escucho");
     let opcion={
         "ESTATUS":"ABIERTO"
     };
-    selecEstatus(opcion);
+    selecEstatus(opcion, "ABIERTO");
 
 });
 
 
 
-function selecEstatus(opcion){
+function selecEstatus(opcion, estatus){
     fetch("../PHP/selectEstatusTicket.php", {
         method: "POST",
         headers:{
@@ -61,15 +66,26 @@ function selecEstatus(opcion){
     let tr=document.createElement("tr");
     tr.id="tr"+i;
         tr.addEventListener("click", ()=>{
+           if(estatus==="ABIERTO"){
             click(tr.id);
+           }else{
+            clickClose(tr.id);
+           }
     });
        
     //trs.push(tr.id);
     for(let e=0;e<9;e++){
+      if(e===1){
         let td=document.createElement("td");
+        td.classList.add('truncate-td');
+        td.textContent=datos[i][columnas[e]]+"  "+datos[i]["hora_Abierto"];
+        tr.appendChild(td);
+      }else{
+          let td=document.createElement("td");
         td.classList.add('truncate-td');
         td.textContent=datos[i][columnas[e]];
         tr.appendChild(td);
+      }
     }
 
      
