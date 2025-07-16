@@ -15,43 +15,43 @@
 <body class="bg-secondary">
     <section class="container-fluid " style="height: 100%" >
         <article class="row border " style="height: 100%;">
-            <aside class="container-fluid  col-md-3 bg-white ">
-                <div id="showTicket" class="d-flex flex-column" >
+            <aside class="container-fluid  col-md-3 bg-white " style="height: 100%;">
+                <div id="showTicket" class="d-flex flex-column justify-content-around" style="height: 100%;" >
                     
                   
-                    <article class=" d-flex flex-column text-center  justify-content-center my-2">
+                    <article class="text-center ">
                         <h2 class="rounded-2 bg-danger bg-gradiant  text-white shadow">TICKET ABIERTO</h2>
                         
                     </article>
-                    <div class="rounded-2 border border-3 border-danger bg-gradiant p-2  shadow">
-                        <article class=" d-flex justify-content-center">
+                    <div class="rounded-2 border border-3 border-danger bg-gradiant  shadow">
+                        <article class=" d-flex justify-content-center p-2">
                             <h3 id="sucursalAside"></h3>
                         </article>
-                        <article class="d-flex ">
-                        <h5 class="">FOLIO: </h5>
+                        <article class="d-flex p-2">
+                        <h5 class="me-2">FOLIO: </h5>
                         <p class="" id="folioAside"></p>
                     </article>
-                    <article class="d-flex   ">
-                        <h5 class="">FECHA: </h5>
+                    <article class="d-flex p-2">
+                        <h5 class="me-2">FECHA: </h5>
                         <p class="" id="fechaAside"></p>
                     </article>
-                    <article class="d-flex   ">
-                        <h5 class="">PERSONA: </h5>
+                    <article class="d-flex p-2">
+                        <h5 class="me-2">PERSONA: </h5>
                         <p class="" id="usuarioAside"></p>
                     </article>
-                  <article class="d-flex   ">
-                        <h5 class="">TELEFONO: </h5>
-                        <p class="" id="telefonoAside"></p>
+                      <article class="d-flex p-2">
+                        <h5 class=" me-2">TELEFONO: </h5>
+                        <p class="text-break" id="telefonoAside"></p>
                   </article>
-                    <article class="d-flex   ">
-                        <h5 class="">IP: </h5>
+                    <article class="d-flex p-2">
+                        <h5 class="me-2">IP: </h5>
                         <p class="" id="ipEquipoAside"></p>
                     </article>
-                    <article class="d-flex   ">
-                        <h5 class="">PROBLEMA: </h5>
+                    <article class="d-flex p-2">
+                        <h5 class="me-2">PROBLEMA: </h5>
                         <p class="" id="problemaAside"></p>
                     </article>
-                    <article class="d-flex flex-column   " >
+                    <article class="d-flex flex-column p-2" >
                         <h5 class="">DESCRIPCION: </h5>
                         <div style="height: 70px; overflow-y: auto;">
                             
@@ -59,7 +59,7 @@
                         </div>
                     </article>
                     </div>
-                    <article class="text-center my-3">
+                    <article class="text-center">
                         <button id="btnChange" class="btn btn-danger text-center ">CERRAR TICKET</button>
                     </article>
                   
@@ -143,32 +143,136 @@
                   <button id="closeTicketButton" class="btn btn-danger text-center my-2">CERRAR</button>
                   
                 </div>
+                 <div id="showTicketClose" class="d-none d-flex flex-column justify-content-around" style="height: 100%;" >
+                    
+                  
+                    <article class="text-center ">
+                        <h2 class="rounded-2 bg-danger bg-gradiant  text-white shadow">TICKET CERRADO</h2>
+                        
+                    </article>
+                    <div class="rounded-2 border border-3 border-danger bg-gradiant  shadow">
+                        <div class="row">
+                            <article class="col-md-6 d-flex flex-column p-2" >
+                                <h5 class="">SUCURSAL </h5>
+                       
+                            </article>
+                            <article class="col-md-6 d-flex flex-column p-2" >
+                                <h5 class="">FOLIO </h5>
+
+                        
+                            </article>
+                        </div>
+                        <div class="row">
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">PERSONA </h5>
+                       
+                            </article>
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">TELEFONO </h5>
+                        
+                            </article>
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">IP </h5>
+                            </article>
+                        </div>
+                    <div class="row">
+                            <article class="col-md-6 d-flex flex-column p-2" >
+                                <h5 class="">PROBLEMA </h5>
+                            </article>
+                        
+                     
+                    <article class="col-md-6 d-flex flex-column p-2" >
+                        <h5 class="">DESCRIPCION </h5>
+                        <div style="height: 70px; overflow-y: auto;">
+                            
+                            
+                        </div>
+                    </article>
+                    </div>
+                    <div class="row">
+                        <article class="col-md-6 d-flex flex-column p-2" >
+                            <h5 class="">FALLA REAL </h5>
+                        </article>
+                        <article class="col-md-6 d-flex flex-column p-2" >
+                            <h5 class="">CAUSA </h5>
+                        </article>
+                    </div>
+                            <article class="d-flex flex-column p-2" >
+                                <h5 class="">RECOMENDACION </h5>
+                            </article>
+                          <div class="row">
+                              <article class="col-md-6 d-flex flex-column p-2" >
+                                <h5 class="">AREA </h5>
+                            </article>
+                            <article class="col-md-6 d-flex flex-column p-2" >
+                                <h5 class="">EQUIPO </h5>
+                            </article>
+                          </div>
+                            <div class="row">
+                                <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">ATENDIO </h5>
+                            </article>
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">TURNO </h5>
+                            </article>
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">MODO </h5>
+                            </article>
+                            </div>
+                            <article class="d-flex flex-column p-2" >
+                                <h5 class="">ERROR DE SUCURSAL </h5>
+                            </article>
+                        <div class="row">
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">FECHA ABIERTO </h5>
+                            </article>
+                            <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">FECHA CERRADO </h5>
+                            </article>
+                                 <article class="col-md-4 d-flex flex-column p-2" >
+                                <h5 class="">SOLUCIONADO EN:  </h5>
+                            </article>
+                        </div>
+                    </div>
+                    
+                  
+                </div>
                 </aside>
 
-            <article class="col-md-9 border border-warning h-100" style="overflow-y: auto;">
+            <article class="container-fluid col-md-9 border border-warning">
+           
                 
-                 <div class="table-responsive " >
-                    <table class="table table-hover shadow ">
-                    <thead class="">
-                        <th>FOLIO</th>
-                        <th>FECHA</th>
-                        <th>SUCURSAL</th>
-                        <th>PEROSONA</th>
-                        <th>TELEFONO</th>
-                        <th>PROBLEMA</th>
-                        <th>DESCRIPCION</th>
-                        <th>IP DEL EQUIPO</th>
-                        <th>ESTATUS</th>
-                    </thead>
-                    <tbody id="tbody">
+                 <div class="d-flex flex-column align-items-center  border" style="height: 100%;" >
+                         <article>
+                            <button id="btnTicketCerrado">CERRADO</button>
+                            <button id="btnTicketAbierto">ABIERTO</button>
+                         </article>
+                    <article class="border border-info bg-light w-100" >
+                        
+                            <table class="table table-hover shadow ">
+                            <thead class="text-center">
+                                <th>FOLIO</th>
+                                <th>FECHA</th>
+                                <th>SUCURSAL</th>
+                                <th>PEROSONA</th>
+                                <th>TELEFONO</th>
+                                <th>PROBLEMA</th>
+                                <th>DESCRIPCION</th>
+                                <th>IP</th>
+                                <th>ESTATUS</th>
+                            </thead>
+                            <tbody id="tbody">
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                        
+                    </article>
                 </div>
             </article>
         </article>
     </section>
     <script src="../JS/close_Ticket.js"></script>
+    <script src="../JS/selectEstatusTicket.js"></script>
     <script src="../JS/client_webSocket.js"></script>
     <script src="../JS/asideLastInfo.js"></script>
     <script src="../JS/show_Ticket.js"></script>

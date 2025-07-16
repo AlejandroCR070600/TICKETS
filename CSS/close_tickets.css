@@ -11,3 +11,10 @@ html, body{
     max-width: 100%;
 }
 
+.truncate-td {
+  white-space: nowrap;     /* No permite salto de línea */
+  overflow: hidden;        /* Oculta el texto que se desborda */
+  text-overflow: ellipsis; /* Agrega "..." si se pasa */
+  max-width: 120px;        /* O el ancho que necesites */
+  height: 50px;
+}

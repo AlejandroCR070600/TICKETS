@@ -1,13 +1,26 @@
 
 
 
+
+
+
+
+view_Tickets();
+
+
+
+
+
+function view_Tickets(){
+     
 fetch("../PHP/show_Tickets.php", {
+
 
 })
 .then(res=>res.json())
 .then(data=>{
-    //let trs=[];
-    let datos={};
+    
+   let datos={};
     
     datos=data;
    if(Array.isArray(data)){
@@ -22,9 +35,17 @@ fetch("../PHP/show_Tickets.php", {
        
     //trs.push(tr.id);
     for(let e=0;e<9;e++){
+      if(e===1){
         let td=document.createElement("td");
+        td.classList.add('truncate-td');
+        td.textContent=datos[i][columnas[e]]+"  "+datos[1]["hora_Abierto"];
+        tr.appendChild(td);
+      }else{
+          let td=document.createElement("td");
+        td.classList.add('truncate-td');
         td.textContent=datos[i][columnas[e]];
         tr.appendChild(td);
+      }
     }
 
      
@@ -46,8 +67,8 @@ fetch("../PHP/show_Tickets.php", {
    trMASSAGE.appendChild(tdMASSAGE);
    tbody.appendChild(trMASSAGE);
    }
-
  
 });
+}
 
 
