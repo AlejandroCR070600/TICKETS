@@ -54,6 +54,7 @@ function closeTicket(){
     let admin=document.getElementById("adminAside").value;
     let turno=document.getElementById("turnoAside").value;
     let error_Sucursal=document.getElementById("error_SucursalAside").value;
+    
 
 
     let datos={
@@ -81,7 +82,7 @@ function closeTicket(){
     .then(res=>res.json())
     .then(data=>{
         
-        console.log(data["MENSAGE"]);
+        console.log(data);
         
     })
 

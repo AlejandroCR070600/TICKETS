@@ -143,94 +143,110 @@
                   <button id="closeTicketButton" class="btn btn-danger text-center my-2">CERRAR</button>
                   
                 </div>
-                 <div id="showTicketClose" class="d-none d-flex flex-column justify-content-around" style="height: 100%;" >
+
+                 <div id="showTicketClose" class="d-none d-flex flex-column border" style="height: 100%;" >
                     
                   
                     <article class="text-center ">
                         <h2 class="rounded-2 bg-danger bg-gradiant  text-white shadow">TICKET CERRADO</h2>
                         
                     </article>
-                    <div class="rounded-2 border border-3 border-danger bg-gradiant  shadow">
+                    <div class="rounded-2 border border-3 border-danger bg-gradiant p-3  shadow">
                         <div class="row">
                             <article class="col-md-6 d-flex flex-column p-2" >
-                                <h5 class="">SUCURSAL </h5>
-                       
+                                <label class="">SUCURSAL </label>
+                                <p id="sucursalClose"></p>
                             </article>
                             <article class="col-md-6 d-flex flex-column p-2" >
-                                <h5 class="">FOLIO </h5>
-
+                                <label class="">FOLIO </label>
+                                <p id="folioClose"></p>
                         
                             </article>
                         </div>
                         <div class="row">
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">PERSONA </h5>
+                                <label class="">PERSONA </label>
+                                <p id="usuarioClose"></p>
                        
                             </article>
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">TELEFONO </h5>
-                        
+                                <label class="">TELEFONO </label>
+                                <p id="telefonoClose"></p>
                             </article>
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">IP </h5>
+                                <label class="">IP </label>
+                                <p id="ipEquipoClose"></p>
                             </article>
                         </div>
                     <div class="row">
                             <article class="col-md-6 d-flex flex-column p-2" >
-                                <h5 class="">PROBLEMA </h5>
+                                <label class="">PROBLEMA </label>
+                                <p id="problemaClose"></p>
                             </article>
                         
                      
                     <article class="col-md-6 d-flex flex-column p-2" >
-                        <h5 class="">DESCRIPCION </h5>
+                        <label class="">DESCRIPCION </label>
                         <div style="height: 70px; overflow-y: auto;">
-                            
+                            <p id="descripcionClose"></p>
                             
                         </div>
                     </article>
                     </div>
                     <div class="row">
                         <article class="col-md-6 d-flex flex-column p-2" >
-                            <h5 class="">FALLA REAL </h5>
+                            <label class="">FALLA REAL </label>
+                            <p id="fallaRealClose"></p>
                         </article>
                         <article class="col-md-6 d-flex flex-column p-2" >
-                            <h5 class="">CAUSA </h5>
+                            <label class="">CAUSA </label>
+                            <p id="causaClose"></p>
                         </article>
                     </div>
                             <article class="d-flex flex-column p-2" >
-                                <h5 class="">RECOMENDACION </h5>
+                                <label class="">RECOMENDACION </label>
+                                <p id="recomendacionClose"></p>
                             </article>
                           <div class="row">
                               <article class="col-md-6 d-flex flex-column p-2" >
-                                <h5 class="">AREA </h5>
+                                <label class="">AREA </label>
+                                <p id="areaClose"></p>
                             </article>
                             <article class="col-md-6 d-flex flex-column p-2" >
-                                <h5 class="">EQUIPO </h5>
+                                <label class="">EQUIPO </label>
+                                <p id="equipoClose"></p>
                             </article>
                           </div>
                             <div class="row">
                                 <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">ATENDIO </h5>
+                                <label class="">ATENDIO </label>
+                                <p id="atendioClose"></p>
                             </article>
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">TURNO </h5>
+                                <label class="">TURNO </label>
+                                <p id="turnoClose"></p>
                             </article>
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">MODO </h5>
+                                <label class="">MODO </label>
+                                <p id="modoClose"></p>
                             </article>
                             </div>
                             <article class="d-flex flex-column p-2" >
-                                <h5 class="">ERROR DE SUCURSAL </h5>
+                                <label class="">ERROR DE SUCURSAL </label>
+                                <p id="errorSucursalClose"></p>
                             </article>
                         <div class="row">
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">FECHA ABIERTO </h5>
+                                <label class="">FECHA ABIERTO </label>
+                                <p id="fechaAbiertoClose"></p>
                             </article>
                             <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">FECHA CERRADO </h5>
+                                <label class="">FECHA CERRADO </label>
+                                <p id="fechaCerradoClose"></p>
                             </article>
                                  <article class="col-md-4 d-flex flex-column p-2" >
-                                <h5 class="">SOLUCIONADO EN:  </h5>
+                                <label class="">SOLUCIONADO EN:  </label>
+                                <p id="tiempoSolucionClose"></p>
                             </article>
                         </div>
                     </div>
@@ -272,6 +288,7 @@
         </article>
     </section>
     <script src="../JS/close_Ticket.js"></script>
+    <script src="../JS/showAllInfoTicket.js"></script>
     <script src="../JS/selectEstatusTicket.js"></script>
     <script src="../JS/client_webSocket.js"></script>
     <script src="../JS/asideLastInfo.js"></script>
