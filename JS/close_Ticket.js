@@ -81,8 +81,8 @@ function closeTicket(){
     })
     .then(res=>res.json())
     .then(data=>{
-        
-        alert(data);
+        console.log(data['MENSAGE']);
+        alert(data['MENSAGE']);
         
     })
 

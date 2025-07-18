@@ -18,3 +18,7 @@ html, body{
   max-width: 120px;        /* O el ancho que necesites */
   height: 50px;
 }
+
+.ticketClose label{
+    font-size: 13px;
+}

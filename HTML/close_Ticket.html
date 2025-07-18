@@ -14,16 +14,16 @@
 
 <body class="bg-secondary">
     <section class="container-fluid " style="height: 100%" >
-        <article class="row border " style="height: 100%;">
+        <article class="row " style="height: 100%;">
             <aside class="container-fluid  col-md-3 bg-white " style="height: 100%;">
-                <div id="showTicket" class="d-flex flex-column justify-content-around" style="height: 100%;" >
+                <div id="showTicket" class="d-flex flex-column justify-content-between" style="height: 100%;" >
                     
                   
                     <article class="text-center ">
-                        <h2 class="rounded-2 bg-danger bg-gradiant  text-white shadow">TICKET ABIERTO</h2>
+                        <h2 class="rounded-2 bg-danger bg-gradiant m-2 text-white shadow">TICKET ABIERTO</h2>
                         
                     </article>
-                    <div class="rounded-2 border border-3 border-danger bg-gradiant  shadow">
+                    <div class="rounded-2 border border-3 border-danger bg-gradiant  shadow" style="height: 100%;">
                         <article class=" d-flex justify-content-center p-2">
                             <h3 id="sucursalAside"></h3>
                         </article>
@@ -60,7 +60,7 @@
                     </article>
                     </div>
                     <article class="text-center">
-                        <button id="btnChange" class="btn btn-danger text-center ">CERRAR TICKET</button>
+                        <button id="btnChange" class="btn btn-danger text-center my-2">CERRAR TICKET</button>
                     </article>
                   
                 </div>
@@ -144,151 +144,175 @@
                   
                 </div>
 
-                 <div id="showTicketClose" class="d-none d-flex flex-column border" style="height: 100%;" >
+                 <div id="showTicketClose" class="d-none d-flex flex-column" style="height: 100%;" >
                     
                   
-                    <article class="text-center ">
-                        <h2 class="rounded-2 bg-danger bg-gradiant  text-white shadow">TICKET CERRADO</h2>
+                    <article class="text-center mt-2">
+                        <h2 class="rounded-2 bg-dark bg-gradiant  text-white shadow">TICKET CERRADO</h2>
                         
                     </article>
-                    <div class="rounded-2 border border-3 border-danger bg-gradiant p-3  shadow">
-                        <div class="row">
-                            <article class="col-md-6 d-flex flex-column p-2" >
+                    <div class="ticketClose rounded-2 border border-3 border-dark bg-gradiant mb-2 p-3  shadow" style="overflow-y: auto;" >
+                        <div class="">
+                            <article class="" >
                                 <label class="">SUCURSAL </label>
-                                <p id="sucursalClose"></p>
+                                <p id="sucursalClose"class="border rounded-2 p-1 text-center"></p>
                             </article>
-                            <article class="col-md-6 d-flex flex-column p-2" >
+                            <article class="" >
                                 <label class="">FOLIO </label>
-                                <p id="folioClose"></p>
+                                <p id="folioClose" class="border rounded-2 p-1 text-center"></p>
                         
                             </article>
                         </div>
-                        <div class="row">
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">PERSONA </label>
-                                <p id="usuarioClose"></p>
-                       
+                        <div class="">
+                            <article class="" >
+                                <label class="">FECHA ABIERTO </label>
+                                <p id="fechaAbiertoClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">TELEFONO </label>
-                                <p id="telefonoClose"></p>
+                            <article class="" >
+                                <label class="">FECHA CERRADO </label>
+                                <p id="fechaCerradoClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">IP </label>
-                                <p id="ipEquipoClose"></p>
+                                 <article class="" >
+                                <label class="">SOLUCIONADO EN:  </label>
+                                <p id="tiempoSolucionClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
                         </div>
-                    <div class="row">
-                            <article class="col-md-6 d-flex flex-column p-2" >
+                        <div class="">
+                                <article class="" >
+                                <label class="">ATENDIO </label>
+                                <p id="atendioClose" class="border rounded-2 p-1 text-center"></p>
+                            </article>
+                            <article class="" >
+                                <label class="">TURNO </label>
+                                <p id="turnoClose" class="border rounded-2 p-1 text-center"></p>
+                            </article>
+                            <article class="" >
+                                <label class="">MODO </label>
+                                <p id="modoClose" class="border rounded-2 p-1 text-center"></p>
+                            </article>
+                            </div>
+                        <div class="">
+                            <article class="" >
+                                <label class="">PERSONA </label>
+                                <p id="usuarioClose" class="border rounded-2 p-1 text-center"></p>
+                       
+                            </article>
+                            <article class="" >
+                                <label class="">TELEFONO </label>
+                                <p id="telefonoClose" class="border rounded-2 p-1 text-center"></p>
+                            </article>
+                            <article class="" >
+                                <label class="">IP </label>
+                                <p id="ipEquipoClose" class="border rounded-2 p-1 text-center"></p>
+                            </article>
+                        </div>
+                    <div class="d-flex flex-column">
+                            <article class="" >
                                 <label class="">PROBLEMA </label>
-                                <p id="problemaClose"></p>
+                                <p id="problemaClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
                         
                      
-                    <article class="col-md-6 d-flex flex-column p-2" >
+                    <article class="" >
                         <label class="">DESCRIPCION </label>
                         <div style="height: 70px; overflow-y: auto;">
-                            <p id="descripcionClose"></p>
+                            <p id="descripcionClose" class="border rounded-2 p-1 text-center"></p>
                             
                         </div>
                     </article>
                     </div>
                     <div class="row">
-                        <article class="col-md-6 d-flex flex-column p-2" >
+                        <article class="" >
                             <label class="">FALLA REAL </label>
-                            <p id="fallaRealClose"></p>
+                            <p id="fallaRealClose" class="border rounded-2 p-1 text-center"></p>
                         </article>
-                        <article class="col-md-6 d-flex flex-column p-2" >
+                        <article class="" >
                             <label class="">CAUSA </label>
-                            <p id="causaClose"></p>
+                            <p id="causaClose" class="border rounded-2 p-1 text-center"></p>
                         </article>
                     </div>
-                            <article class="d-flex flex-column p-2" >
+                            <article class="" >
                                 <label class="">RECOMENDACION </label>
-                                <p id="recomendacionClose"></p>
+                                <p id="recomendacionClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
                           <div class="row">
-                              <article class="col-md-6 d-flex flex-column p-2" >
+                              <article class="" >
                                 <label class="">AREA </label>
-                                <p id="areaClose"></p>
+                                <p id="areaClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
-                            <article class="col-md-6 d-flex flex-column p-2" >
+                            <article class="" >
                                 <label class="">EQUIPO </label>
-                                <p id="equipoClose"></p>
+                                <p id="equipoClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
                           </div>
-                            <div class="row">
-                                <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">ATENDIO </label>
-                                <p id="atendioClose"></p>
-                            </article>
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">TURNO </label>
-                                <p id="turnoClose"></p>
-                            </article>
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">MODO </label>
-                                <p id="modoClose"></p>
-                            </article>
-                            </div>
-                            <article class="d-flex flex-column p-2" >
+                            
+                            <article class="" >
                                 <label class="">ERROR DE SUCURSAL </label>
-                                <p id="errorSucursalClose"></p>
+                                <p id="errorSucursalClose" class="border rounded-2 p-1 text-center"></p>
                             </article>
-                        <div class="row">
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">FECHA ABIERTO </label>
-                                <p id="fechaAbiertoClose"></p>
-                            </article>
-                            <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">FECHA CERRADO </label>
-                                <p id="fechaCerradoClose"></p>
-                            </article>
-                                 <article class="col-md-4 d-flex flex-column p-2" >
-                                <label class="">SOLUCIONADO EN:  </label>
-                                <p id="tiempoSolucionClose"></p>
-                            </article>
-                        </div>
+                        
                     </div>
                     
                   
                 </div>
                 </aside>
 
-            <article class="container-fluid col-md-9 border border-warning">
-           
-                
-                 <div class="d-flex flex-column align-items-center  border" style="height: 100%;" >
-                         <article>
-                            <button id="btnTicketCerrado">CERRADO</button>
-                            <button id="btnTicketAbierto">ABIERTO</button>
-                         </article>
-                    <article class="border border-info bg-light w-100" >
-                        
-                            <table class="table table-hover shadow ">
-                            <thead class="text-center">
-                                <th>FOLIO</th>
-                                <th>FECHA</th>
-                                <th>SUCURSAL</th>
-                                <th>PEROSONA</th>
-                                <th>TELEFONO</th>
-                                <th>PROBLEMA</th>
-                                <th>DESCRIPCION</th>
-                                <th>IP</th>
-                                <th>ESTATUS</th>
-                            </thead>
-                            <tbody id="tbody">
+            <article class="container-fluid col-md-9">
+    <div class="d-flex flex-column align-items-center bg-light p-3" style="width: 100%; height: 100%;">
+         <div class="mb-3">
+            <form id="formBuscar">
+                <label>BUSCAR POR: </label>
+                <select id="selectBuscar">
+                    <option value="folio">folio</option>
+                    <option value="fecha_Abierto">fecha</option>
+                    <option value="sucursal">sucursal</option>
+                    <option value="usuario">persona</option>
+                    <option value="telefono">telefono</option>
+                    <option value="problema">problema</option>
+                    <option value="ip_Equipo">ip</option>
+                </select>
+                <input id="inputBuscar" type="text">
+                <button type="submit">BUSCAR</button>
+            </form>
+        </div>
+        
+        <!-- Botones -->
+        <div class="mb-3">
+            <button id="btnTicketCerrado" class="btn btn-primary me-2">CERRADO</button>
+            <button id="btnTicketAbierto" class="btn btn-primary">ABIERTO</button>
+        </div>
 
-                            </tbody>
-                        </table>
-                        
-                    </article>
-                </div>
-            </article>
+        <!-- Tabla con scroll -->
+        <div class=" w-100" style="overflow-y: auto; max-height: 500px;">
+            <div class="table-responsive">
+                <table class="table table-light table-sm table-hover">
+                <thead class="text-center">
+                    <tr>
+                        <th>FOLIO</th>
+                        <th>FECHA</th>
+                        <th>SUCURSAL</th>
+                        <th>PERSONA</th>
+                        <th>TELÉFONO</th>
+                        <th>PROBLEMA</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>IP</th>
+                        <th>ESTATUS</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- Contenido dinámico aquí -->
+                </tbody>
+            </table>
+            </div>
+        </div>
+        
+    </div>
+</article>
+
         </article>
     </section>
     <script src="../JS/close_Ticket.js"></script>
-    <script src="../JS/showAllInfoTicket.js"></script>
+    <script src="../JS/buscar_Ticket.js"></script>
     <script src="../JS/selectEstatusTicket.js"></script>
     <script src="../JS/client_webSocket.js"></script>
     <script src="../JS/asideLastInfo.js"></script>

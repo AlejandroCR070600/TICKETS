@@ -93,17 +93,51 @@
                 $stmt->bind_param("sissssssi", $folio,$sucursal,$usuario,$telefono,$descripcion,$ipEquipo,$fecha_Abierto, $hora_Abierto,$problema);
 
                 if($stmt->execute()===true){
-                    $MENSAGE=["MENSAGE"=>"se realizo el ticket con exito"];
+                    $MENSAGE=["MESSAGE"=>"se realizo el ticket con exito"];
                     echo json_encode($MENSAGE);
                     $stmt->close();
                     exit;
                 }else{
-                    $MENSAGE=["MENSAGE"=>"hubo un problema al realizar el ticket"];
+                    $MENSAGE=["MESSAGE"=>"hubo un problema al realizar el ticket"];
                     echo json_encode($MENSAGE);
                     $stmt->close();
                     exit;
                 }
             }
+        }
+        public function buscarTickets($columna, $buscar){
+            global $conn;
+            $datos=[];
+            $sql="SELECT 
+    t.folio,
+    t.fecha_Abierto,
+    t.hora_Abierto,
+    s.nombre AS sucursal,
+    t.usuario,
+    t.telefono,
+    p.nombre AS problema,
+    t.descripcion,
+    t.ip_Equipo,
+    t.estatus
+FROM tickets t
+INNER JOIN sucursal s ON t.sucursal = s.id
+INNER JOIN problema p ON t.problema = p.id
+WHERE t.$columna = '$buscar'
+ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC
+";
+
+            $result=$conn->query($sql);
+            if($result->num_rows>0){
+                while($row=$result->fetch_assoc()){
+                    $datos[]=$row;
+                }
+                echo json_encode($datos);
+            }else{
+                $datos=['MESSAGE'=>'no se encuentran tickets'];
+                echo json_encode($datos);
+
+            }
+
         }
 
         public function closeTicket(){
