@@ -25,7 +25,7 @@ fetch("../PHP/show_Tickets.php", {
     datos=data;
    if(Array.isArray(data)){
     console.log("hola");
-     let columnas=["folio","fecha_Abierto","sucursal","usuario","telefono","problema","descripcion","ip_Equipo", "estatus"]
+     let columnas=["sucursal","folio","fecha_Abierto","descripcion"]
   for(let i= 0; i<datos.length;i++){
     let tr=document.createElement("tr");
     tr.id="tr"+i;
@@ -34,8 +34,8 @@ fetch("../PHP/show_Tickets.php", {
     });
        
     //trs.push(tr.id);
-    for(let e=0;e<9;e++){
-      if(e===1){
+    for(let e=0;e<4;e++){
+      if(e===2){
         let td=document.createElement("td");
         td.classList.add('truncate-td');
         td.textContent=datos[i][columnas[e]]+"  "+datos[1]["hora_Abierto"];

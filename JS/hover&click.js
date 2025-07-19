@@ -1,6 +1,29 @@
 
-function click(id){
+    
+   
+        function click(id){
+    
     let asideValues=[]
+    let tds=document.querySelectorAll("#"+ id +" td"); 
+    
+    tds.forEach(td=>{
+            
+        asideValues.push(td.textContent);
+    });
+    let datosE={'folio': asideValues[1]};
+
+    fetch("../PHP/showDataAside.php",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(datosE)
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data[0]['sucursal']);
+             let asideValues=[]
     let sucursalAside=document.getElementById("sucursalAside");
     let folioAside=document.getElementById("folioAside");
     let fechaAside=document.getElementById("fechaAside");
@@ -9,25 +32,21 @@ function click(id){
     let problemaAside=document.getElementById("problemaAside");
     let ipEquipoAside=document.getElementById("ipEquipoAside");
     let descripcionAside=document.getElementById("descripcionAside");
-
-     let tds=document.querySelectorAll("#"+ id +" td");
-     
-        tds.forEach(td=>{
-            
-            asideValues.push(td.textContent);
-        })
-
-        sucursalAside.textContent=asideValues[2];
-        folioAside.textContent=asideValues[0];
-        fechaAside.textContent=asideValues[1];
-        usuarioAside.textContent=asideValues[3];
-        telefonoAside.textContent=asideValues[4];
-        problemaAside.textContent=asideValues[5];
-        ipEquipoAside.textContent=asideValues[7];
-        descripcionAside.textContent=asideValues[6];
-
+    
+   
+        sucursalAside.textContent=data[0]['sucursal'];
+        folioAside.textContent=data[0]['folio'];
+        fechaAside.textContent=data[0]['fecha_Abierto'] + " " + data[0]['hora_Abierto'];
+        usuarioAside.textContent=data[0]['usuario'];
+        telefonoAside.textContent=data[0]['telefono'];
+        problemaAside.textContent=data[0]['problema'];
+        ipEquipoAside.textContent=data[0]['ip_Equipo'];
+        descripcionAside.textContent=data[0]['descripcion'];
+    });
         
 }
+        
+
 
 function clickClose(id){
 

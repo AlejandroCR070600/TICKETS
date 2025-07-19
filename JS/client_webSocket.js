@@ -11,7 +11,7 @@ socket.on('mensaje', (msg) => {
   const datos = JSON.parse(msg); // Muy importante
   console.log (datos);
   let tbody=document.getElementById("tbody")
-  let columnas=["folio","fecha_Abierto","sucursal","usuario","telefono","problema","descripcion","ip_Equipo", "estatus"]
+  let columnas=["sucursal","folio","fecha_Abierto","descripcion"]
   let trs=document.querySelectorAll("#tbody tr");
 
   if(trs.length>0){
@@ -29,10 +29,18 @@ socket.on('mensaje', (msg) => {
     });
        
     //trs.push(tr.id);
-    for(let e=0;e<9;e++){
+    for(let e=0;e<4;e++){
+       if(e===2){
         let td=document.createElement("td");
+        td.classList.add('truncate-td');
+        td.textContent=datos[i][columnas[e]]+"  "+datos[i]["hora_Abierto"];
+        tr.appendChild(td);
+      }else{
+          let td=document.createElement("td");
+        td.classList.add('truncate-td');
         td.textContent=datos[i][columnas[e]];
         tr.appendChild(td);
+      }
     }
 
      
