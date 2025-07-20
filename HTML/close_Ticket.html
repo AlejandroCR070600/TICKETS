@@ -12,302 +12,332 @@
       
 </head>
 
-<body class="bg-secondary">
-    <section class="container-fluid " style="height: 100%" >
-        <article class="row " style="height: 100%;">
-            <aside class="container-fluid  col-lg-3 bg-white " style="height: 100%;">
-                <div id="showTicket" class="d-flex flex-column justify-content-between" style="height: 100%;" >
-                    
-                  
-                    <article class="text-center ">
-                        <h2 class="rounded-2 bg-danger bg-gradiant m-2 text-white shadow">TICKET ABIERTO</h2>
-                        
-                    </article>
-                    <div class="rounded-2 border border-3 border-danger bg-gradiant  shadow" style="height: 100%;">
-                        <article class=" d-flex justify-content-center p-2">
-                            <h3 id="sucursalAside"></h3>
-                        </article>
-                        <article class="d-flex p-2">
-                        <h5 class="me-2">FOLIO: </h5>
-                        <p class="" id="folioAside"></p>
-                    </article>
-                    <article class="d-flex p-2">
-                        <h5 class="me-2">FECHA: </h5>
-                        <p class="" id="fechaAside"></p>
-                    </article>
-                    <article class="d-flex p-2">
-                        <h5 class="me-2">PERSONA: </h5>
-                        <p class="" id="usuarioAside"></p>
-                    </article>
-                      <article class="d-flex p-2">
-                        <h5 class=" me-2">TELEFONO: </h5>
-                        <p class="text-break" id="telefonoAside"></p>
-                  </article>
-                    <article class="d-flex p-2">
-                        <h5 class="me-2">IP: </h5>
-                        <p class="" id="ipEquipoAside"></p>
-                    </article>
-                    <article class="d-flex p-2">
-                        <h5 class="me-2">PROBLEMA: </h5>
-                        <p class="" id="problemaAside"></p>
-                    </article>
-                    <article class="d-flex flex-column p-2" >
-                        <h5 class="">DESCRIPCION: </h5>
-                        <div style="height: 70px; overflow-y: auto;">
-                            
-                            <p class="m" id="descripcionAside"></p>
-                        </div>
-                    </article>
-                    </div>
-                    <article class="text-center">
-                        <button id="btnChange" class="btn btn-danger text-center my-2">CERRAR TICKET</button>
-                    </article>
-                  
-                </div>
-
-                <div id="formClose" class="d-none d-flex flex-column justify-content-around h-100">
-                  
-                   <article class="border border-danger border-3 p-3 rounded-4 shadow">
-                     <article class="row align-items-center justify-content-between">
-                        <button id="btnReturnTicket" class=" border bg-danger ms-3 rounded-5 w-auto col-md-3  shadow">
-                          <i class="fa-solid fa-arrow-left text-white"></i>
-                        </button>
-                        <h4 class="col-md-9  text-center">CERRAR TICKET</h4>
-                    </article>
-                  <form class="mb-2 p-3">
-                      
-                        <article class="d-flex flex-column justify-content-center">
-                            <input class="form-control my-2 w-100" id="falla_RealAside" type="text" placeholder="FALLA REAL">
-                            <input class="form-control my-2 w-100" id="causaAside" type="text" placeholder="CAUSA">
-                            <input class="form-control my-2 w-100"  id="recomendacionAside" type="text" placeholder="RECOMENDACION">
-                        </article>
-
-
-                    <article class="row ">
-                        <div class="d-flex justify-content-around align-items-center my-2">
-                            <label class="fw-bold">AREA</label>
-                          <select class="form-control w-75" name="" id="areaAside"><option value="1">SOPORTE</option></select>
-                        </div>
-                        <div class="container my-2">
-                        <div class="d-flex justify-content-between align-items-center" >
-                            <article class="">
-                                <label class="fw-bold">ATIENDE</label>
-                                <select class="form-control" name="" id="adminAside">
-                                    <option value="1">Nicolas Casas</option>
-                                </select>
-                            </article>
-                            <article>
-                                <label class="fw-bold">TURNO</label>
-                                <select class="form-control" name="" id="turnoAside">
-                                    <option value="MATUTINO">MATUTINO</option>
-                                    <option value="VESPERTINO">VESPERTINO</option>
-                                </select>
-                            </article>
-                        </div>
-                       
-                        
-                       </div>
-                      
-                    </article>
-                     <article>
-                        <div>
-                            <labe class="fw-bold">EQUIPO</label>
-                         <select class="form-control" name="" id="equipoAside"><option value="1">CPU</option></select>
-                        </div>
-
-                        <div class="row my-2">
-                            <article class="col-md-5">
-                                <label class="fw-bold">MODO</label>
-                                <select class="form-control " name="" id="modoAside">
-                                    <option value="2">REMOTO</option>
-                                    <option value="1">PRESENCIAL</option>
-
-                                    
-                                </select>
-                            </article>
-                     
-                            <article class="col-md-7">
-                                <label class="fw-bold">Error de sucursal</label>
-                                <select class="form-control" name="" id="error_SucursalAside">
-                                    <option value="NO">NO</option>
-                                    <option value="SI">SI</option>
-                                </select>
-                            </article>
-                      
-                        </div>
-                     </article>
-                      
-                  </form>
-                   </article>
-                   
-                  <button id="closeTicketButton" class="btn btn-danger text-center my-2">CERRAR</button>
-                  
-                </div>
-
-                 <div id="showTicketClose" class="d-none d-flex flex-column" style="height: 100%;" >
-                    
-                  
-                    <article class="text-center mt-2">
-                        <h2 class="rounded-2 bg-dark bg-gradiant  text-white shadow">TICKET CERRADO</h2>
-                        
-                    </article>
-                    <div class="ticketClose rounded-2 border border-3 border-dark bg-gradiant mb-2 p-3  shadow" style="overflow-y: auto;" >
-                        <div class="">
-                            <article class="" >
-                                <label class="">SUCURSAL </label>
-                                <p id="sucursalClose"class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            <article class="" >
-                                <label class="">FOLIO </label>
-                                <p id="folioClose" class="border rounded-2 p-1 text-center"></p>
-                        
-                            </article>
-                        </div>
-                        <div class="">
-                            <article class="" >
-                                <label class="">FECHA ABIERTO </label>
-                                <p id="fechaAbiertoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            <article class="" >
-                                <label class="">FECHA CERRADO </label>
-                                <p id="fechaCerradoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                                 <article class="" >
-                                <label class="">SOLUCIONADO EN:  </label>
-                                <p id="tiempoSolucionClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                        </div>
-                        <div class="">
-                                <article class="" >
-                                <label class="">ATENDIO </label>
-                                <p id="atendioClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            <article class="" >
-                                <label class="">TURNO </label>
-                                <p id="turnoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            <article class="" >
-                                <label class="">MODO </label>
-                                <p id="modoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            </div>
-                        <div class="">
-                            <article class="" >
-                                <label class="">PERSONA </label>
-                                <p id="usuarioClose" class="border rounded-2 p-1 text-center"></p>
-                       
-                            </article>
-                            <article class="" >
-                                <label class="">TELEFONO </label>
-                                <p id="telefonoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            <article class="" >
-                                <label class="">IP </label>
-                                <p id="ipEquipoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                        </div>
-                    <div class="d-flex flex-column">
-                            <article class="" >
-                                <label class="">PROBLEMA </label>
-                                <p id="problemaClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                        
-                     
-                    <article class="" >
-                        <label class="">DESCRIPCION </label>
-                        <div style="height: 70px; overflow-y: auto;">
-                            <p id="descripcionClose" class="border rounded-2 p-1 text-center"></p>
-                            
-                        </div>
-                    </article>
-                    </div>
-                    <div class="row">
-                        <article class="" >
-                            <label class="">FALLA REAL </label>
-                            <p id="fallaRealClose" class="border rounded-2 p-1 text-center"></p>
-                        </article>
-                        <article class="" >
-                            <label class="">CAUSA </label>
-                            <p id="causaClose" class="border rounded-2 p-1 text-center"></p>
-                        </article>
-                    </div>
-                            <article class="" >
-                                <label class="">RECOMENDACION </label>
-                                <p id="recomendacionClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                          <div class="row">
-                              <article class="" >
-                                <label class="">AREA </label>
-                                <p id="areaClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                            <article class="" >
-                                <label class="">EQUIPO </label>
-                                <p id="equipoClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                          </div>
-                            
-                            <article class="" >
-                                <label class="">ERROR DE SUCURSAL </label>
-                                <p id="errorSucursalClose" class="border rounded-2 p-1 text-center"></p>
-                            </article>
-                        
-                    </div>
-                    
-                  
-                </div>
-                </aside>
-
-            <article class="container-fluid col-lg-9">
-    <div class="d-flex flex-column justify-content-around align-items-center p-3" style="width: 100%; height: 100%;">
-        <article class="d-flex justify-content-between w-100">
-            <div class="mb-3">
-                <form id="formBuscar">
-                    <label>BUSCAR POR: </label>
-                    <select id="selectBuscar">
-                        <option value="folio">folio</option>
-                        <option value="fecha_Abierto">fecha</option>
-                        <option value="sucursal">sucursal</option>
-                        <option value="usuario">persona</option>
-                        <option value="telefono">telefono</option>
-                        <option value="problema">problema</option>
-                        <option value="ip_Equipo">ip</option>
-                    </select>
-                    <input id="inputBuscar" type="text">
-                    <button type="submit">BUSCAR</button>
-                </form>
-            </div>
+<body class="bg-light">
+    <main class="container-fluid " style="">
         
-            <!-- Botones -->
-            <div class="mb-3">
-                <button id="btnTicketCerrado" class="btn btn-primary me-2">CERRADO</button>
-                <button id="btnTicketAbierto" class="btn btn-primary">ABIERTO</button>
-            </div>
-        </article>
+           <section class="row" style="height: 100%;">
+               <aside class="col-md-3 p-2">
+  <div class=" p-3 rounded-3 h-100">
+    <div id="showTicket" class="border rounded-3 p-3 shadow-sm h-100 overflow-auto">
 
-        <!-- Tabla con scroll -->
-        
-            <div class="table-responsive table-wrapper w-100 rounded-4" style="height: 800px; max-height: 800px;">
-                <table class="table table-light table-bordered table-sm table-hover" style="overflow-y: auto;">
-                <thead class="text-center bg-dark" style="position: sticky; top: 0; z-index: 1;">
-                    <tr>
-                        <th>SUCURSAL</th>
-                        <th>FOLIO</th>
-                        <th>FECHA</th>
-                        <th>DESCRIPCIÓN</th>
-                        
-                    </tr>
-                </thead>
-                <tbody id="tbody" class="text-center">
-                    <!-- Contenido dinámico aquí -->
-                </tbody>
-            </table>
-            
-        </div>
-        
+      <!-- Encabezado -->
+      <div class="d-flex justify-content-between align-items-center mb-1 border-bottom pb-2">
+        <h5 id="sucursalAside" class="text-primary fw-bold mb-0">Sucursal</h5>
+        <h6 id="folioAside" class="text-muted mb-0">#Folio</h6>
+      </div>
+
+      <!-- Fecha y hora -->
+      <div class="text-center mb-1">
+        <label class="fw-semibold text-secondary">FECHA Y HORA</label>
+        <p class="border rounded-3 p-2 bg-light" id="fechaAside">--/--/----</p>
+      </div>
+
+      <!-- Usuario -->
+      <div class="mb-1 text-center">
+        <label class="fw-semibold text-secondary">PERSONA</label>
+        <p class="border rounded-3 p-2 bg-light" id="usuarioAside">Nombre</p>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="mb-1 text-center">
+        <label class="fw-semibold text-secondary">TELÉFONO</label>
+        <p class="border rounded-3 p-2 bg-light" id="telefonoAside">---</p>
+      </div>
+
+      <!-- IP -->
+      <div class="mb-1 text-center">
+        <label class="fw-semibold text-secondary">IP</label>
+        <p class="border rounded-3 p-2 bg-light" id="ipEquipoAside">---</p>
+      </div>
+
+      <!-- Problema -->
+      <div class="mb-1 text-center">
+        <label class="fw-semibold text-secondary">PROBLEMA</label>
+        <p class="border rounded-3 p-2 bg-light" id="problemaAside">---</p>
+      </div>
+
+      <!-- Descripción -->
+      <div class="mb-1 text-center">
+        <label class="fw-semibold text-secondary">DESCRIPCIÓN</label>
+        <p class="border rounded-3 p-2 bg-light" id="descripcionAside">---</p>
+      </div>
+
+      <!-- Botón -->
+      <div class="text-center mt-4">
+        <button id="btnChange" class="btn btn-primary w-100">CERRAR TICKET</button>
+      </div>
+
     </div>
-</article>
+    <div id="formClose" class="d-none d-flex flex-column justify-content-around h-100">
+  <section class="border border-danger border-3 p-4 rounded-4 shadow bg-white mb-3">
 
-        </article>
+    <!-- Header del formulario -->
+    <div class="row align-items-center justify-content-between mb-4">
+      <div class="col-auto">
+        <button id="btnReturnTicket" class="btn btn-danger rounded-circle shadow-sm">
+          <i class="fa-solid fa-arrow-left text-white"></i>
+        </button>
+      </div>
+      <div class="col text-center">
+        <h4 class="m-0 fw-bold text-danger">CERRAR TICKET</h4>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <form class="p-2">
+
+      <!-- Falla, causa, recomendación -->
+      <div class="mb-4">
+        <input class="form-control mb-3" id="falla_RealAside" type="text" placeholder="FALLA REAL">
+        <input class="form-control mb-3" id="causaAside" type="text" placeholder="CAUSA">
+        <input class="form-control mb-3" id="recomendacionAside" type="text" placeholder="RECOMENDACIÓN">
+      </div>
+
+      <!-- Área -->
+      <div class="mb-4 d-flex align-items-center gap-3">
+        <label class="fw-bold mb-0">ÁREA</label>
+        <select class="form-select w-75" id="areaAside">
+          <option value="1">SOPORTE</option>
+        </select>
+      </div>
+
+      <!-- Atiende y Turno -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="fw-bold">ATIENDE</label>
+          <select class="form-select" id="adminAside">
+            <option value="1">Nicolas Casas</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="fw-bold">TURNO</label>
+          <select class="form-select" id="turnoAside">
+            <option value="MATUTINO">MATUTINO</option>
+            <option value="VESPERTINO">VESPERTINO</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Equipo -->
+      <div class="mb-4">
+        <label class="fw-bold">EQUIPO</label>
+        <select class="form-select" id="equipoAside">
+          <option value="1">CPU</option>
+        </select>
+      </div>
+
+      <!-- Modo y Error de sucursal -->
+      <div class="row g-3">
+        <div class="col-md-5">
+          <label class="fw-bold">MODO</label>
+          <select class="form-select" id="modoAside">
+            <option value="2">REMOTO</option>
+            <option value="1">PRESENCIAL</option>
+          </select>
+        </div>
+        <div class="col-md-7">
+          <label class="fw-bold">¿ERROR DE SUCURSAL?</label>
+          <select class="form-select" id="error_SucursalAside">
+            <option value="NO">NO</option>
+            <option value="SI">SÍ</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Botón cerrar -->
+      <div class="text-center mt-5">
+        <button id="closeTicketButton" type="button" class="btn btn-danger w-100 py-2 fw-bold">
+          <i class="fa-solid fa-xmark me-2"></i> CERRAR TICKET
+        </button>
+      </div>
+
+    </form>
+  </section>
+</div>
+<div id="showTicketClose" class="d-none d-flex flex-column h-100 container py-3">
+  <!-- Encabezado -->
+  <div class="text-center mb-3">
+    <h2 class="bg-dark text-white py-2 px-4 rounded-3 shadow">TICKET CERRADO</h2>
+  </div>
+
+  <!-- Contenedor de datos -->
+  <div class="bg-light border border-3 border-dark rounded-4 shadow p-4 overflow-auto" style="max-height: 80vh;">
+    
+    <!-- Sección: Información básica -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="fw-bold">Sucursal</label>
+        <p id="sucursalClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-6">
+        <label class="fw-bold">Folio</label>
+        <p id="folioClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+    </div>
+
+    <!-- Fechas -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="fw-bold">Fecha Abierto</label>
+        <p id="fechaAbiertoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Fecha Cerrado</label>
+        <p id="fechaCerradoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Solucionado en</label>
+        <p id="tiempoSolucionClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+    </div>
+
+    <!-- Técnico -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="fw-bold">Atendió</label>
+        <p id="atendioClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Turno</label>
+        <p id="turnoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Modo</label>
+        <p id="modoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+    </div>
+
+    <!-- Usuario -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="fw-bold">Persona</label>
+        <p id="usuarioClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Teléfono</label>
+        <p id="telefonoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">IP</label>
+        <p id="ipEquipoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+    </div>
+
+    <!-- Problema y descripción -->
+    <div class="mb-3">
+      <label class="fw-bold">Problema</label>
+      <p id="problemaClose" class="border rounded-3 p-2 text-center bg-white"></p>
+    </div>
+    <div class="mb-3">
+      <label class="fw-bold">Descripción</label>
+      <div class="border rounded-3 p-2 bg-white" style="height: 100px; overflow-y: auto;">
+        <p id="descripcionClose" class="mb-0 text-center"></p>
+      </div>
+    </div>
+
+    <!-- Diagnóstico -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="fw-bold">Falla real</label>
+        <p id="fallaRealClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Causa</label>
+        <p id="causaClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-4">
+        <label class="fw-bold">Recomendación</label>
+        <p id="recomendacionClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+    </div>
+
+    <!-- Otros -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="fw-bold">Área</label>
+        <p id="areaClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+      <div class="col-md-6">
+        <label class="fw-bold">Equipo</label>
+        <p id="equipoClose" class="border rounded-3 p-2 text-center bg-white"></p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="fw-bold">Error de sucursal</label>
+      <p id="errorSucursalClose" class="border rounded-3 p-2 text-center bg-white"></p>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+</aside>
+
+
+      <section class="col-md-9">
+  <div class="shadow-sm h-100 bg-white rounded-4 p-4 d-flex flex-column">
+
+    <!-- FORMULARIO DE BÚSQUEDA -->
+    <article class="mb-4">
+      <form id="formBuscar" class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="selectBuscar" class="col-form-label fw-bold text-primary">Buscar por:</label>
+        </div>
+        <div class="col-md-3">
+          <select id="selectBuscar" class="form-select border-primary shadow-sm">
+            <option value="folio">Folio</option>
+            <option value="fecha_Abierto">Fecha</option>
+            <option value="sucursal">Sucursal</option>
+            <option value="usuario">Persona</option>
+            <option value="telefono">Teléfono</option>
+            <option value="problema">Problema</option>
+            <option value="ip_Equipo">IP</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <input id="inputBuscar" type="text" class="form-control border-primary shadow-sm" placeholder="Escribe tu búsqueda">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary px-4 shadow-sm">
+            <i class="fa-solid fa-magnifying-glass me-2"></i> Buscar
+          </button>
+        </div>
+      </form>
+    </article>
+
+    <!-- BOTONES DE FILTRO -->
+    <div class="mb-4 d-flex gap-3">
+      <button id="btnTicketCerrado" class="btn btn-outline-danger flex-grow-1 shadow-sm fw-semibold rounded-pill">
+        <i class="fa-solid fa-lock me-2"></i> Tickets Cerrados
+      </button>
+      <button id="btnTicketAbierto" class="btn btn-outline-success flex-grow-1 shadow-sm fw-semibold rounded-pill">
+        <i class="fa-solid fa-unlock me-2"></i> Tickets Abiertos
+      </button>
+    </div>
+
+    <!-- TABLA CON SCROLL -->
+    <div class="rounded-4 border border-2 shadow-sm" style="max-height: 420px; overflow-y: auto;">
+      <table class="table table-bordered table-hover table-sm align-middle mb-0">
+        <thead class="text-center bg-primary text-white sticky-top" style="top: 0; z-index: 10;">
+          <tr>
+            <th class="text-truncate">Sucursal</th>
+            <th class="text-truncate">Folio</th>
+            <th class="text-truncate">Fecha</th>
+            <th class="text-truncate">Descripción</th>
+          </tr>
+        </thead>
+        <tbody id="tbody" class="text-center">
+          <!-- Aquí van los registros -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+
+           </section> <!-- Cierra la sección con class="row" -->
+        </main> <!-- Correcto cierre del main -->
     </section>
     <script src="../JS/close_Ticket.js"></script>
     <script src="../JS/buscar_Ticket.js"></script>

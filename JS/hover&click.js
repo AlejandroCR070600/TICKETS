@@ -58,7 +58,7 @@ let asideValues=[]
             asideValues.push(td.textContent);
         })
 
-        console.log(asideValues[0]);
+        console.log(asideValues[1]);
         
 
 fetch("../PHP/showAllInfoTicket.php",{
@@ -66,7 +66,7 @@ fetch("../PHP/showAllInfoTicket.php",{
     headers:{
         "Content-Type":"application/json"
     },
-    body:JSON.stringify(asideValues[0])
+    body:JSON.stringify(asideValues[1])
 
 })
 .then(res=>res.json())
