@@ -104,7 +104,7 @@ fetch("../PHP/showAllInfoTicket.php",{
     recomendacionClose.textContent=data[0]['recomendacion'];
     areaClose.textContent=data[0]['area'];
     equipoClose.textContent=data[0]['equipo'];
-    atendioClose.textContent=data[0]['atendio'];
+    atendioClose.textContent=data[0]['admin'];
     turnoClose.textContent=data[0]['turno'];
     modoClose.textContent=data[0]['modo'];
     errorSucursalClose.textContent=data[0]['erros_Sucursal'];

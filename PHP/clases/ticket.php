@@ -19,7 +19,7 @@
         public $area;
         public $equipo;
         public $modo;
-        public $atendio;
+        public $admin;
         public $turno;
         public $error_Sucursal;
         public $estatus;
@@ -107,24 +107,26 @@
         }
         public function buscarTickets($columna, $buscar){
             global $conn;
+            if($columna==="sucursal" || $columna==="area" || $columna==="equipo"|| $columna==="atendio" || $columna==="problema" ){
+                $valorBuscar=$buscar;
+            }else{
+                $valorBuscar="'$buscar'";
+            }
             $datos=[];
             $sql="SELECT 
-                t.folio,
-                t.fecha_Abierto,
-                t.hora_Abierto,
-                s.nombre AS sucursal,
-                t.usuario,
-                t.telefono,
-                p.nombre AS problema,
-                t.descripcion,
-                t.ip_Equipo,
-                t.estatus
-            FROM tickets t
-            INNER JOIN sucursal s ON t.sucursal = s.id
-            INNER JOIN problema p ON t.problema = p.id
-            WHERE t.$columna = '$buscar'
-            ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC
-            ";
+                    t.folio,
+                    t.fecha_Abierto,
+                    t.hora_Abierto,
+                    s.nombre AS sucursal, 
+                    t.descripcion
+                    
+                
+                    FROM tickets t
+                    INNER JOIN sucursal s ON t.sucursal = s.id
+                    WHERE t.$columna = $valorBuscar
+                    ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC";
+
+            
 
 
             $result=$conn->query($sql);
@@ -139,6 +141,22 @@
 
             }
 
+        }
+
+        public function selectChange($seleccion){
+            global $conn;
+            $sql="select * from $seleccion";
+            $result=$conn->query($sql);
+            $datos=[];
+            if($result->num_rows>0){
+                while($row=$result->fetch_assoc()){
+                    $datos[]=$row;
+                }
+                echo json_encode($datos);
+            }else{
+                    $datos=['MESSAGE'=>'no se encuentran tickets'];
+                echo json_encode($datos);
+            }
         }
 
          public function showDateAside(){
@@ -184,7 +202,7 @@
                 area=?, 
                 equipo=?, 
                 modo=?, 
-                atendio=?,
+                admin=?,
                 turno=?,
                 error_Sucursal=?, 
                 tiempo_solucion=?, 
@@ -202,7 +220,7 @@
             $this->area, 
             $this->equipo,
             $this->modo, 
-            $this->atendio,
+            $this->admin,
             $this->turno,
             $this->error_Sucursal,
             $this->tiempo_Solucion,
