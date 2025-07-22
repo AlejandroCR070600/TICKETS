@@ -159,7 +159,7 @@
             }
         }
 
-         public function showDateAside(){
+        public function showDateAside(){
              global $conn;
              
              $sql="SELECT 
@@ -242,11 +242,6 @@
                 $stmt->close();
                 exit;
             }
-                }
-
-        
-            }
-
-           
-
+        }
+    }
 ?>
