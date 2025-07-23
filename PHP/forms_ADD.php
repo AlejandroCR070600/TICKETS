@@ -31,7 +31,7 @@ switch($value->tabla){
         $table="equipo";
         $columnas="nombre";
         $signo="?";
-        $valores=[$value->equipo];
+        $valores=[$value->nombre];
         $tipo="s";
     break;
     case "supervisores":

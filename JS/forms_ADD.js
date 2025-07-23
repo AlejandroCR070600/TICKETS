@@ -10,12 +10,13 @@ let datos={};
 btnFormSucursal.addEventListener('click', function(event){
     event.preventDefault();
     let inputFormSucursal = document.getElementById("inputFormSucursal").value;
-    let inputFormSupervisorS = document.getElementById("inputFormSupervisorS").value;
+    let selectFormSupervisorS = document.getElementById("selectFormSupervisorS").value;
     let inputFormSegmento = document.getElementById("inputFormSegmento").value;
+    console.log(selectFormSupervisorS);
     datos={
         "tabla":"sucursal",
         "sucursal":inputFormSucursal,
-        "supervisor":inputFormSupervisorS,
+        "supervisor":selectFormSupervisorS,
         "segmento":inputFormSegmento
     };
     fetchDatos(datos);
@@ -31,12 +32,16 @@ btnFormProblema.addEventListener('click', function(event){
     fetchDatos(datos);
 
 });
+
 btnFormAdmin.addEventListener('click', function(event){
     event.preventDefault();
     let inputFormAdmin = document.getElementById("inputFormAdmin").value;
+    let selectFormAdmin = document.getElementById("selectFormPuesto").value;
+    console.log(selectFormAdmin);
     datos={
         "tabla":"admin",
-        "nombre":inputFormAdmin
+        "nombre":inputFormAdmin,
+        "puesto":selectFormAdmin
     };
 
     fetchDatos(datos);
