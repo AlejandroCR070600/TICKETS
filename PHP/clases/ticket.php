@@ -193,7 +193,8 @@
             }
             }
 
-        public function closeTicket(){
+       
+            public function closeTicket(){
             global $conn;
             $this->tiempo_Solucion=$this->getTimeOfClosing();
             $sql="UPDATE tickets SET falla_Real=?, 

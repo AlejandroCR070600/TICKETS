@@ -23,6 +23,6 @@ form {
 
 @media (min-width: 992px) {
   form {
-    width: 75%;
+    width: 50%;
   }
 }

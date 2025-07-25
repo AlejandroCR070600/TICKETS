@@ -23,8 +23,9 @@ fetch("../PHP/show_Tickets.php", {
    let datos={};
     
     datos=data;
+    
    if(Array.isArray(data)){
-    console.log("hola");
+    
      let columnas=["sucursal","folio","fecha_Abierto","descripcion"]
   for(let i= 0; i<datos.length;i++){
     let tr=document.createElement("tr");
@@ -38,7 +39,7 @@ fetch("../PHP/show_Tickets.php", {
       if(e===2){
         let td=document.createElement("td");
         td.classList.add('truncate-td');
-        td.textContent=datos[i][columnas[e]]+"  "+datos[1]["hora_Abierto"];
+        td.textContent=datos[i][columnas[e]]+"  "+datos[i]["hora_Abierto"];
         tr.appendChild(td);
       }else{
           let td=document.createElement("td");

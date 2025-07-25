@@ -10,7 +10,7 @@ $sql="SELECT
     t.fecha_Abierto,
     t.hora_Abierto,
     s.nombre AS sucursal,
-    t.descripcion,
+    t.descripcion
   
 FROM tickets t
 INNER JOIN sucursal s ON t.sucursal = s.id

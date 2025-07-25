@@ -24,7 +24,7 @@ if($result->num_rows>0){
     }
    echo json_encode($tickets);
 }else{
-    $tickets[ "MESSAGE"]="no hay tickets";
+    $tickets["MESSAGE"]="no hay tickets";
     echo json_encode($tickets);
 }
 

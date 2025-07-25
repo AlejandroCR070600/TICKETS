@@ -1,6 +1,7 @@
 let btnChange=document.getElementById("btnChange");
 let btnReturnTicket=document.getElementById("btnReturnTicket");
 let closeTicketButton=document.getElementById("closeTicketButton");
+adminSelect();
 
 btnChange.addEventListener("click", function(){
 
@@ -88,4 +89,37 @@ function closeTicket(){
 
     
     
+}
+
+function adminSelect(){
+    fetch("../PHP/select_Admin.php",{
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        let selectAdmin=document.getElementById("adminAside");
+        
+        
+            if(Array.isArray(data)){
+                    console.log("hgolaasdasdfsdf");
+                
+                for(let i=0;i<data.length;i++){
+                
+                    let option=document.createElement('option');
+                    option.textContent=data[i]['nombre'];    
+                    option.value=data[i]['id'];
+                    selectAdmin.appendChild(option);
+                }
+           
+            }else{
+                let option=document.createElement('option');
+                option.textContent="SIN ADMINISTRADORES";
+                selectAdmin.appendChild(option);
+                selectAdmin.disabled=true;
+            }
+        
+
+    
+     
+
+    })
 }
