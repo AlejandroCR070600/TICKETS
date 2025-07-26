@@ -38,7 +38,7 @@ function equiposSelect(){
     .then(data=>{
         
         let selectEquipo=document.getElementById("equipoAside");
-        console.log(data);
+        //console.log(data);
         
             if(Array.isArray(data)){
                 
@@ -72,7 +72,7 @@ function areaSelect(){
     .then(data=>{
         
         let selectArea=document.getElementById("areaAside");
-        console.log(data);
+        //console.log(data);
         
             if(Array.isArray(data)){
                 
@@ -103,10 +103,10 @@ function enviarDesdePHP() {
   fetch('../PHP/websocket.php')
     .then(res => res.text())
     .then(data => {
-      console.log('📤 PHP ejecutado correctamente:', data);
+      //console.log('PHP ejecutado correctamente:', data);
     })
     .catch(err => {
-      console.error('❌ Error al llamar a PHP:', err);
+      //console.error(' Error al llamar a PHP:', err);
     });
 }
 
@@ -169,7 +169,7 @@ function adminSelect(){
         
         
             if(Array.isArray(data)){
-                    console.log("hgolaasdasdfsdf");
+                    //console.log("hgolaasdasdfsdf");
                 
                 for(let i=0;i<data.length;i++){
                 

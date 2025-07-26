@@ -16,7 +16,7 @@ fetch("../PHP/asideLastInfo.php",{
     let ipEquipoAside=document.getElementById("ipEquipoAside");
     let descripcionAside=document.getElementById("descripcionAside");
     let datos={}
-    console.log(data['folio']);
+    //console.log(data['folio']);
 
     sucursalAside.textContent=data['sucursal'];
     folioAside.textContent=data['folio'];

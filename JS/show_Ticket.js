@@ -64,6 +64,7 @@ fetch("../PHP/show_Tickets.php", {
    tdMASSAGE.colSpan=9;
    tdMASSAGE.textContent="NO HAY NINGUN TICKET ABIERTO";
    tdMASSAGE.id="tdMASSAGE";
+   trMASSAGE.id="noHayTicket"
    trMASSAGE.classList.add("text-center");
    trMASSAGE.appendChild(tdMASSAGE);
    tbody.appendChild(trMASSAGE);

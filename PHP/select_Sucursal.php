@@ -1,6 +1,8 @@
 <?php
+session_start();
 require "conection.php";
-$sql="SELECT * from sucursal";
+
+$sql="SELECT * from sucursal where nombre='{$_SESSION['usuario']}'";
 $result=$conn->query($sql);
 $datos=[];
 if($result->num_rows>0){

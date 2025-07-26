@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Mazatlan');
     require "conection.php";
     class ticket{
         

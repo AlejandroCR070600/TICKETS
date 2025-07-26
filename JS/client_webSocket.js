@@ -1,24 +1,32 @@
 const socket = io('http://localhost:3000'); // Usa tu IP real si accedes desde otro dispositivo
 
   let trs=document.querySelectorAll("tr");
-  console.log(trs);
+  //console.log(trs);
 
 socket.on('connect', () => {
-  console.log('✅ Conectado al WebSocket:', socket.id);
+  //console.log(' Conectado al WebSocket:', socket.id);
 });
 trsID=[];
 socket.on('mensaje', (msg) => {
   const datos = JSON.parse(msg); // Muy importante
-  console.log (datos);
+  //console.log (datos);
   let tbody=document.getElementById("tbody")
   let columnas=["sucursal","folio","fecha_Abierto","descripcion"]
   let trs=document.querySelectorAll("#tbody tr");
-
+  console.log(trs[0]['id']);
   if(trs.length>0){
-    trs.forEach(tr=>{
+    if(trs[0]['id']==='noHayTicket'){
+      trs.forEach(tr=>{
       let trRemove=document.getElementById(tr.id);
       trRemove.remove();
     })
+    }else{
+      trs.forEach(tr=>{
+      let trRemove=document.getElementById(tr.id);
+      trRemove.remove();
+    })
+    }
+
   }
 
  for(let i= 0; i<datos.length;i++){
