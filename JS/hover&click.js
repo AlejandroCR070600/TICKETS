@@ -71,6 +71,7 @@ fetch("../PHP/showAllInfoTicket.php",{
 })
 .then(res=>res.json())
 .then(data=>{
+    console.log(data);
     let sucursalClose=document.getElementById("sucursalClose");
     let folioClose=document.getElementById("folioClose");
     let fechaAbiertoClose=document.getElementById("fechaAbiertoClose");
@@ -107,7 +108,7 @@ fetch("../PHP/showAllInfoTicket.php",{
     atendioClose.textContent=data[0]['admin'];
     turnoClose.textContent=data[0]['turno'];
     modoClose.textContent=data[0]['modo'];
-    errorSucursalClose.textContent=data[0]['erros_Sucursal'];
+    errorSucursalClose.textContent=data[0]['error_Sucursal'];
     fechaCerradoClose.textContent=data[0]['fecha_Cerrado']+" "+data[0]['hora_Cerrado'];
     tiempoSolucionClose.textContent=data[0]['tiempo_Solucion'] + " MINUTOS";
 

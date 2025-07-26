@@ -15,7 +15,7 @@ $ticket->area=$value->area;
 $ticket->modo=$value->modo;
 $ticket->equipo=$value->equipo;
 $ticket->admin=$value->admin;
-$ticket->turno='MATUTINO';
+$ticket->turno=$value->turno;
 $ticket->error_Sucursal=$value->error_Sucursal;
 $ticket->estatus="CERRADO";
 $ticket->mes=date("m");
@@ -24,7 +24,7 @@ $ticket->closeTicket();
 
 
 
-//echo json_encode($value->folio);
+//echo json_encode($value);
 
 
 

@@ -17,6 +17,7 @@ INNER JOIN sucursal s ON t.sucursal = s.id
 WHERE t.estatus = 'ABIERTO'
 ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC";
 $result=$conn->query($sql);
+$json = "";
 if($result->num_rows>0){
     while($row =$result->fetch_assoc()){
         $tablaTickets[]=$row;

@@ -2,13 +2,47 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+require "../conection.php";
 require __DIR__ . '/../../vendor/autoload.php';
  // si usas Composer
 
+ $value=json_decode(file_get_contents("php://input"));
+ datosSupervisor($value);
+ 
 
-echo enviarCorreo('xxalinestarxx@gmail.com');
 
-function enviarCorreo($correo){
+ function idSupervisor($sucursal){
+    global $conn;
+    $sql="SELECT supervisor FROM sucursal where id=$sucursal";
+    $result=$conn->query($sql);
+    $datos=[];
+    if($result->num_rows>0){
+        $row=$result->fetch_assoc();
+        $datos[]=$row;
+        return $datos;
+    }
+
+
+ }
+ function datosSupervisor($sucursal){
+    global $conn;
+    $supervisor =idSupervisor($sucursal);
+    $sqlS="SELECT correo, claveApp FROM supervisores where id = {$supervisor[0]['supervisor']}";
+    $result=$conn->query($sqlS);
+    $datos=[];
+    if($result->num_rows>0){
+        $row=$result->fetch_assoc();
+        $datos[]=$row;
+        enviarCorreo($datos[0]['correo'],$datos[0]['claveApp']);
+    }
+    
+ }
+
+ 
+
+//echo enviarCorreo('xxalinestarxx@gmail.com', 'samu joqp qany ajee');
+
+function enviarCorreo($correo,$contraseña){
 $mail = new PHPMailer(true);
 
 try {
@@ -17,7 +51,7 @@ try {
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'xxalinestarxxcr0706@gmail.com';  // Tu Gmail
-    $mail->Password = 'samu joqp qany ajee'; // Contraseña de aplicación que acabas de crear
+    $mail->Password = $contraseña; // Contraseña de aplicación que acabas de crear
     $mail->SMTPSecure = 'tls'; // También puede ser 'ssl'
     $mail->Port = 587; // Si usas 'ssl', cambia a 465
 
@@ -32,8 +66,8 @@ try {
     $mail->AltBody = 'Este es el mensaje en texto plano para clientes que no soportan HTML';
 
     $mail->send();
-    json_encode('El mensaje se envió correctamente');
+    echo json_encode('El mensaje se envió correctamente');
 } catch (Exception $e) {
-    json_encode("Error al enviar el correo: {$mail->ErrorInfo}");
+    echo json_encode("Error al enviar el correo: {$mail->ErrorInfo}");
 }
 }

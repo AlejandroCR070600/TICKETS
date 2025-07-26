@@ -194,7 +194,7 @@
             }
 
        
-            public function closeTicket(){
+        public function closeTicket(){
             global $conn;
             $this->tiempo_Solucion=$this->getTimeOfClosing();
             $sql="UPDATE tickets SET falla_Real=?, 
@@ -214,7 +214,7 @@
                 hora_Cerrado=? where folio = ?";
 
             $stmt=$conn->prepare($sql);
-            $stmt->bind_param("sssiisiisiiissss",
+            $stmt->bind_param("sssiisissiiissss",
             $this->falla_Real,
             $this->causa,
             $this->recomendacion,

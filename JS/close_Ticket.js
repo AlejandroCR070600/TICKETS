@@ -2,7 +2,8 @@ let btnChange=document.getElementById("btnChange");
 let btnReturnTicket=document.getElementById("btnReturnTicket");
 let closeTicketButton=document.getElementById("closeTicketButton");
 adminSelect();
-
+equiposSelect();
+areaSelect();
 btnChange.addEventListener("click", function(){
 
 let showTicket=document.getElementById("showTicket");
@@ -29,6 +30,74 @@ closeTicket()
     
     
 });
+function equiposSelect(){
+    
+    fetch("../PHP/select_Equipo.php",{
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        
+        let selectEquipo=document.getElementById("equipoAside");
+        console.log(data);
+        
+            if(Array.isArray(data)){
+                
+                
+                for(let i=0;i<data.length;i++){
+                    
+                    let option=document.createElement('option');
+                    option.textContent=data[i]['nombre'];    
+                    option.value=data[i]['id'];
+                    selectEquipo.appendChild(option);
+                }
+           
+            }else{
+                let option=document.createElement('option');
+                option.textContent="SIN EQUIPOS";
+                selectEquipo.appendChild(option);
+                selectEquipo.disabled=true;
+            }
+        
+
+    
+     
+
+    })
+}
+function areaSelect(){
+    
+    fetch("../PHP/select_Area.php",{
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        
+        let selectArea=document.getElementById("areaAside");
+        console.log(data);
+        
+            if(Array.isArray(data)){
+                
+                
+                for(let i=0;i<data.length;i++){
+                    
+                    let option=document.createElement('option');
+                    option.textContent=data[i]['nombre'];    
+                    option.value=data[i]['id'];
+                    selectArea.appendChild(option);
+                }
+           
+            }else{
+                let option=document.createElement('option');
+                option.textContent="SIN AREAS";
+                selectArea.appendChild(option);
+                selectArea.disabled=true;
+            }
+        
+
+    
+     
+
+    })
+}
 
 function enviarDesdePHP() {
   fetch('../PHP/websocket.php')

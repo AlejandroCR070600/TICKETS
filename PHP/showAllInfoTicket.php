@@ -35,7 +35,7 @@ FROM tickets t
 INNER JOIN sucursal s ON t.sucursal = s.id
 INNER JOIN area a ON t.area = a.id
 INNER JOIN equipo e ON t.equipo = e.id
-INNER JOIN admin u ON t.atendio = u.id
+INNER JOIN admin u ON t.admin = u.id
 INNER JOIN problema p ON t.problema = p.id
 where folio='$value'
 
