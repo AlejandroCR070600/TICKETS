@@ -11,10 +11,8 @@ $sql="SELECT
     
 FROM tickets t
 INNER JOIN sucursal s ON t.sucursal = s.id
-
 WHERE t.estatus = 'ABIERTO'
-ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC
-";
+ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC";
 $result=$conn->query($sql);
 $tickets=[];
 if($result->num_rows>0){

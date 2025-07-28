@@ -1,13 +1,13 @@
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tickets
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -46,7 +46,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `area`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `area` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -70,7 +70,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `equipo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `equipo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -94,7 +94,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `problema`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `problema` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -118,7 +118,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `puesto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `puesto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -142,14 +142,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sucursal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sucursal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
   `supervisor` int(11) DEFAULT NULL,
   `segmento` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +158,7 @@ CREATE TABLE `sucursal` (
 
 LOCK TABLES `sucursal` WRITE;
 /*!40000 ALTER TABLE `sucursal` DISABLE KEYS */;
-INSERT INTO `sucursal` VALUES (19,'CENTRAL',8,1),(20,'MOLOLOA',8,2),(21,'VALLE',8,3);
+INSERT INTO `sucursal` VALUES (16,'CENTRAL',8,1);
 /*!40000 ALTER TABLE `sucursal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +168,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `supervisores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `supervisores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
@@ -195,7 +195,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tickets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tickets` (
   `folio` varchar(20) NOT NULL,
   `sucursal` int(11) DEFAULT NULL,
@@ -208,7 +208,7 @@ CREATE TABLE `tickets` (
   `recomendacion` text DEFAULT NULL,
   `area` int(11) DEFAULT NULL,
   `equipo` int(11) DEFAULT NULL,
-  `estatus` enum('CERRADO','ABIERTO','PENDIENTE') DEFAULT 'ABIERTO',
+  `estatus` enum('CERRADO','ABIERTO') DEFAULT 'ABIERTO',
   `modo` varchar(20) DEFAULT NULL,
   `admin` int(11) DEFAULT NULL,
   `turno` varchar(20) DEFAULT NULL,
@@ -242,33 +242,8 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES ('SF270720253',21,'nicolas casas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197','ASDASDFDSFSDGFGSDF','no sabe escribir','le doy unas clases',2,39,'CERRADO','REMOTO',8,'MATUTINO','NO',421,7,2025,5,'2025-07-28','13:23:45','20:25:33','2025-07-27',NULL),('SF2707202544',21,'nicolas casas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'PENDIENTE',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'20:25:37','2025-07-27','hola como estas perro'),('SF2707202547',21,'nicolas casas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197','ASDASDFDSFSDGFGSDF','no entra al sua','se cierra sesion y se vuelve a entrar',2,2,'CERRADO','REMOTO',7,'MATUTINO','NO',1212,7,2025,5,'2025-07-28','00:12:55','20:25:30','2025-07-27',NULL),('SF2707202585',21,'nicolas casas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'20:25:38','2025-07-27',NULL),('SF2707205232',21,'nicolas casas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'PENDIENTE',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'20:52:49','2025-07-27','cambio de tambor'),('SF2707221598',21,'nicolas casas','3112552522','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore maxime quae vitae ut nulla! Labore pariatur velit nisi corporis deserunt, ex nulla doloremque temporibus dolor repellat? Rem nostrum iusto voluptate.','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'PENDIENTE',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'22:15:50','2025-07-27','cambio de tambor'),('SF2707222168',21,'nicolas casas','3112552522','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore maxime quae vitae ut nulla! Labore pariatur velit nisi corporis deserunt, ex nulla doloremque temporibus dolor repellat? Rem nostrum iusto voluptate.','192.168.254.197','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore maxime quae vitae ut nulla! Labore pariatur velit nisi corporis deserunt, ex nulla doloremque temporibus dolor repellat? Rem nostrum iusto voluptate.','sesion iniciada dos veces','se cierra sesion y se vuelve a abri',2,31,'CERRADO','REMOTO',9,'VESPERTINO','NO',80,7,2025,7,'2025-07-27','23:41:08','22:21:04','2025-07-27',NULL),('SF2807121311',19,'javier nicolas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197','ASDASDFDSFSDGFGSDF','no sabe escribir','le doy unas clases',2,39,'CERRADO','REMOTO',8,'MATUTINO','NO',70,7,2025,5,'2025-07-28','13:24:14','12:13:58','2025-07-28',NULL),('SF2807121477',19,'javier nicolas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197','ASDASDFDSFSDGFGSDF','no sabe escribir','le doy unas clases',2,39,'CERRADO','REMOTO',8,'MATUTINO','NO',70,7,2025,5,'2025-07-28','13:24:11','12:14:03','2025-07-28',NULL),('SF2807121498',19,'javier nicolas','3112552522','ASDASDFDSFSDGFGSDF','192.168.254.197','ASDASDFDSFSDGFGSDF','no sabe escribir','le doy unas clases',2,39,'CERRADO','REMOTO',8,'MATUTINO','NO',70,7,2025,5,'2025-07-28','13:24:08','12:14:04','2025-07-28',NULL),('SF2807132452',19,'nicolas casas','3112552522','teclado no sirve','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:24:57','2025-07-28',NULL),('SF2807132469',19,'nicolas casas','3112552522','teclado no sirve','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:24:59','2025-07-28',NULL),('SF2807132547',21,'nicolas casas','3112552522','sua no entra','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:50','2025-07-28',NULL),('SF2807132551',19,'nicolas casas','3112552522','teclado no sirve','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'PENDIENTE',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:03','2025-07-28','hola como estas perro'),('SF2807132558',19,'nicolas casas','3112552522','teclado no sirve','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'PENDIENTE',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:02','2025-07-28','hola como estas perro'),('SF2807132562',21,'nicolas casas','3112552522','sua no entra','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:51','2025-07-28',NULL),('SF2807132581',21,'nicolas casas','3112552522','sua no entra','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:49','2025-07-28',NULL),('SF2807132590',19,'nicolas casas','3112552522','teclado no sirve','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:00','2025-07-28',NULL),('SF2807132593',19,'nicolas casas','3112552522','teclado no sirve','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'PENDIENTE',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'13:25:04','2025-07-28','hola como estas perro');
+INSERT INTO `tickets` VALUES ('SF260716533',16,'nicolas casas','3112552522','no abre el sua compañero','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'16:53:43','2025-07-26',NULL),('SF2607165595',16,'nicolas casas','3112552522','no puedo entrar al sua compañero','192.168.254.197','no puedo entrar al sua compañero','dos ventanas abiertas','se cierra sesion y se vuelve a entrar',2,31,'CERRADO','REMOTO',9,'VESPERTINO','NO',1,7,2025,5,'2025-07-26','16:57:02','16:55:26','2025-07-26',NULL),('SF260716585',16,'nicolas casas','3112552522','no puedo entrar al sua compañero','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'16:58:22','2025-07-26',NULL),('SF2607170078',16,'nicolas casas','3112552522','no puedo entrar al sua compañero','192.168.254.197',NULL,NULL,NULL,NULL,NULL,'ABIERTO',NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,NULL,NULL,'17:00:09','2025-07-26',NULL);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(50) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'central','central123'),(2,'mololoa','mololoa123'),(3,'valle','valle123');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -280,4 +255,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-28 15:47:35
+-- Dump completed on 2025-07-27 11:30:24

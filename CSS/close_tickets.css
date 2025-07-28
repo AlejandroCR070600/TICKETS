@@ -1,12 +1,57 @@
 
 html, body {
   height: 100%;
+  max-height: 100%;
   margin: 0;
   padding: 0;
   
 }
+.carta{
+  height: 200px;
+  width: 2;
+  
+}
+.aside{
+  max-height: 100%;
+  overflow-y: auto;
+}
 
+.descrip{
+  height: 75px;
+  overflow: hidden;
+  
+}
+.cartaCompleta{
+  max-height: 100%;
+  overflow: hidden;
+}
+.datos{
+  height: 100%;
+  
+}
+.label{
+  font-size: 12px;
+  
+}
+.ocultar-scroll {
+  overflow: auto;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
 
+.ocultar-scroll::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari y Edge */
+}
+
+.p{
+  font-size: 14px;
+}
+.label{
+  font-size: 20px;
+}
+.labelTC{
+  font-size: 12px;
+}
 
 .truncate-td {
   white-space: nowrap;     /* No permite salto de línea */

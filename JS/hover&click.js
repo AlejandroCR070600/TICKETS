@@ -1,7 +1,4 @@
-
-    
-   
-        function click(id){
+function click(id){
     
     let asideValues=[]
     let tds=document.querySelectorAll("#"+ id +" td"); 
@@ -10,7 +7,16 @@
             
         asideValues.push(td.textContent);
     });
-    let datosE={'folio': asideValues[1]};
+    console.log(asideValues);
+
+    let datosE={
+        'folio': asideValues[1],
+        'estatus':"ABIERTO"
+
+
+    };
+    
+            console.log(datosE);
 
     fetch("../PHP/showDataAside.php",{
         method:"POST",
@@ -22,7 +28,7 @@
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data[0]['sucursal']);
+            console.log(data);
              let asideValues=[]
     let sucursalAside=document.getElementById("sucursalAside");
     let folioAside=document.getElementById("folioAside");
@@ -33,6 +39,7 @@
     let ipEquipoAside=document.getElementById("ipEquipoAside");
     let descripcionAside=document.getElementById("descripcionAside");
     
+    
    
         sucursalAside.textContent=data[0]['sucursal'];
         folioAside.textContent=data[0]['folio'];
@@ -42,8 +49,56 @@
         problemaAside.textContent=data[0]['problema'];
         ipEquipoAside.textContent=data[0]['ip_Equipo'];
         descripcionAside.textContent=data[0]['descripcion'];
+        
     });
         
+}
+
+
+function clickPendiente(id){
+    let asideValues=[]
+    let tds=document.querySelectorAll("#"+ id +" td"); 
+    
+    tds.forEach(td=>{
+            
+        asideValues.push(td.textContent);
+    });
+
+    let datosE={'folio': asideValues[1], "estatus": "PENDIENTE"};
+    
+            console.log(asideValues);
+
+    fetch("../PHP/showDataAside.php",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(datosE)
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+    let sucursalAside=document.getElementById("sucursalAside");
+    let folioAside=document.getElementById("folioAside");
+    let fechaAside=document.getElementById("fechaAside");
+    let usuarioAside=document.getElementById("usuarioAside");
+    let telefonoAside=document.getElementById("telefonoAside");
+    let problemaAside=document.getElementById("problemaAside");
+    let ipEquipoAside=document.getElementById("ipEquipoAside");
+    let descripcionAside=document.getElementById("descripcionAside");
+    let procesoAside=document.getElementById("procesoAside");
+    
+   
+        sucursalAside.textContent=data[0]['sucursal'];
+        folioAside.textContent=data[0]['folio'];
+        fechaAside.textContent=data[0]['fecha_Abierto'] + " " + data[0]['hora_Abierto'];
+        usuarioAside.textContent=data[0]['usuario'];
+        telefonoAside.textContent=data[0]['telefono'];
+        problemaAside.textContent=data[0]['problema'];
+        ipEquipoAside.textContent=data[0]['ip_Equipo'];
+        descripcionAside.textContent=data[0]['descripcion'];
+        procesoAside.textContent=data[0]['proceso'];
+    });
 }
         
 

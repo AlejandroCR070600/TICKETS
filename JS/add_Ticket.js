@@ -1,20 +1,23 @@
-
 let btnTicket=document.getElementById('btnAgregarTicket');
 sucursalesSelect();
 problemaSelect();
 
-btnTicket.addEventListener('click', function(){
-    agregarTicket()
-    .then(()=>{
-        enviarCorreo();
-        enviarDesdePHP();
-    })
-    .catch(err =>{
-        console.error("error al agregar el ticket");
-    })
+btnTicket.addEventListener('click', async function(){
+    
+    try{
+        let sucursal=document.getElementById("selectSucursal").value;
+        console.log(sucursal);    
+        await agregarTicket();
+        await enviarCorreo();
+        await enviarDesdePHP();
+        alert('Ticket Agregado Con Exito');
+  
+    }catch(error){
+        alert("hubo un error al procesar el ticket");
+    }
 
 
-})
+});
 
 function sucursalesSelect(){
     fetch("../PHP/select_Sucursal.php",{
@@ -46,7 +49,7 @@ function sucursalesSelect(){
     
      
 
-    })
+    });
 }
 
 function problemaSelect(){
@@ -79,7 +82,7 @@ function problemaSelect(){
     
      
 
-    })
+    });
 }
 
 function enviarCorreo(){
@@ -94,7 +97,7 @@ function enviarCorreo(){
     .then(res=>res.json())
     .then(data=>{
         console.log(data);
-    })
+    });
 
 }
 
@@ -111,6 +114,7 @@ function enviarDesdePHP() {
 
 function agregarTicket(){
     
+    
     let sucursal=document.getElementById("selectSucursal").value;
     let problema=document.getElementById("selectProblema").value;
     let usuario=document.getElementById("usuario").value;
@@ -124,7 +128,9 @@ function agregarTicket(){
         "problema":problema,
         "descripcion":descripcion,
         "ipEquipo":ipEquipo
-    }
+    };
+    console.log(datos);
+    
     
 
     return fetch("../PHP/add_Ticket.php",{
@@ -137,6 +143,6 @@ function agregarTicket(){
     .then(res=>res.json())
     .then(data=>{
         alert(data['MESSAGE']);
-    })
+    });
 
 }

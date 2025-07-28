@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Mazatlan');
-    require "conection.php";
+    
     class ticket{
         
         public $folio;
@@ -27,6 +27,7 @@ date_default_timezone_set('America/Mazatlan');
         public $tiempo_Solucion;
         public $mes;
         public $year;
+        public $proceso;
 
 
         private function crearFolio(){
@@ -58,6 +59,19 @@ date_default_timezone_set('America/Mazatlan');
 
             
         }
+        private function getLastTicketPendiente(){
+            global $conn;
+            
+            $sql="SELECT folio from tickets where estatus='PENDIENTE', sucursal= ORDER BY folio DESC limit 1";
+            $result=$conn->query($sql);
+            if($result->num_rows>0){
+                $row=$result->fetch_assoc();
+            }else{
+                $row="NO HAY TICKETS PENDIENTES";
+            }
+
+        }
+
 
         public function addTicket(){
             global $conn;
@@ -73,6 +87,8 @@ date_default_timezone_set('America/Mazatlan');
                 
                 
                 $datesJS=["MENSAGE"=>"Tienes un campo vacio"];
+                echo json_encode($datesJS);
+                exit();
                 }else{
                 
                 
@@ -173,11 +189,12 @@ date_default_timezone_set('America/Mazatlan');
                 p.nombre AS problema,
                 t.descripcion,
                 t.ip_Equipo,
-                t.estatus
+                t.estatus,
+                t.proceso
             FROM tickets t
             INNER JOIN sucursal s ON t.sucursal = s.id
             INNER JOIN problema p ON t.problema = p.id
-            WHERE t.estatus = 'ABIERTO' and t.folio = '$this->folio'
+            WHERE t.estatus = '$this->estatus' and t.folio = '$this->folio'
             ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC
             ";
             $result=$conn->query($sql);
@@ -244,6 +261,138 @@ date_default_timezone_set('America/Mazatlan');
                 $stmt->close();
                 exit;
             }
+        }
+        private function obtenerSucursal(){
+            global $conn;
+            $sql="SELECT * FROM sucursal where nombre='$this->sucursal'";
+            $result=$conn->query($sql);
+
+            if($result->num_rows>0){
+                $row=$result->fetch_assoc();
+                return $row['id'];
+            }
+        }
+
+        public function ticketPendiente(){
+            global $conn;
+            $sql="UPDATE tickets SET estatus='PENDIENTE', proceso='$this->proceso' where folio='$this->folio'";
+            $result=$conn->query($sql);
+            if($result===true){
+                  $MENSAGE=["MESSAGE"=>"TICKET PUESTO EN ESTATUS PENDIENTE"];
+                    echo json_encode($MENSAGE);
+                    
+                    exit;
+            }
+        }
+        public function selectEstatusTicketUsuario(){
+            $sucursal=$this->obtenerSucursal();
+            global $conn;
+            $sql="SELECT 
+                t.folio,
+                t.fecha_Abierto,
+                t.hora_Abierto,
+                s.nombre AS sucursal,
+                t.usuario,
+                t.telefono,
+                p.nombre AS problema,
+                t.descripcion,
+                t.ip_Equipo,
+                t.estatus
+            FROM tickets t
+            INNER JOIN sucursal s ON t.sucursal = s.id
+            INNER JOIN problema p ON t.problema = p.id
+            WHERE t.estatus = ? and t.sucursal=?
+            ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC
+            ";
+
+            $stmt=$conn->prepare($sql);
+            $stmt->bind_param("si", $this->estatus, $sucursal);
+            $stmt->execute();
+            $tickets=[];
+            $result=$stmt->get_result();
+            if($result->num_rows>0){
+                
+                while($row=$result->fetch_assoc()){
+                    $tickets[]=$row;
+                    
+                    
+                }
+                echo json_encode($tickets);
+            }else{
+                $tickets[ "MESSAGE"]="no hay tickets";
+                echo json_encode($tickets);
+            }
+
+        }
+
+        public function showTicketsUsuarios(){
+
+            global $conn;
+
+            $sucursal=$this->obtenerSucursal();
+
+
+            
+
+            $sql="SELECT 
+                    t.folio,
+                    t.fecha_Abierto,
+                    t.hora_Abierto,
+                    s.nombre AS sucursal, 
+                    t.descripcion
+                    
+                    
+                FROM tickets t
+                INNER JOIN sucursal s ON t.sucursal = s.id
+                WHERE t.estatus = '$this->estatus' AND t.sucursal = $sucursal
+                ORDER BY t.fecha_Abierto DESC, t.hora_Abierto DESC";
+                $result=$conn->query($sql);
+                $tickets=[];
+                if($result->num_rows>0){
+                    while($row=$result->fetch_assoc()){
+                        $tickets[]=$row;
+                        
+                    }
+                echo json_encode($tickets);
+                }else{
+                    $tickets["MESSAGE"]="no hay tickets";
+                    echo json_encode($tickets);
+                }
+
+
+
+        }
+        public function asieLIU(){
+            global $conn;
+
+            $sucursal=$this->obtenerSucursal();
+                    $sql="SELECT 
+            t.folio,
+            t.fecha_Abierto,
+            t.hora_Abierto,
+            s.nombre AS sucursal,
+            t.usuario,
+            t.telefono,
+            p.nombre AS problema,
+            t.descripcion,
+            t.ip_Equipo,
+            t.estatus
+        FROM tickets t
+        INNER JOIN sucursal s ON t.sucursal = s.id
+        INNER JOIN problema p ON t.problema = p.id where sucursal = $sucursal and estatus='$this->estatus'
+        ORDER BY t.folio DESC
+        LIMIT 1
+
+        ";
+        $result=$conn->query($sql);
+        $datosE=[];
+
+        if($result->num_rows>0){
+            $row=$result->fetch_assoc();
+            $datosE=$row;
+
+            echo json_encode($datosE);
+        }
         }
     }
 ?>

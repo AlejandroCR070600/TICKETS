@@ -30,6 +30,7 @@ closeTicket()
     
     
 });
+
 function equiposSelect(){
     
     fetch("../PHP/select_Equipo.php",{

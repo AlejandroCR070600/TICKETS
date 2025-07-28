@@ -1,31 +1,30 @@
+//primero vamos a definir las variables que ocupamos del DOM
 
 let btnCerrado =document.getElementById('btnTicketCerrado');
 let btnAbierto =document.getElementById('btnTicketAbierto');
+let btnPendiente=document.getElementById('btnTicketPendiente');
 let showTicket=document.getElementById("showTicket");
 let formClose=document.getElementById("formClose");
 let showTicketClose=document.getElementById("showTicketClose");
+let btnProcesoDnone=document.getElementById("btnProceso-D-none");
+let proceso=document.getElementById("proceso-D-none");
 
-
-btnCerrado.addEventListener("click", function(event){
-   showTicket.classList.add("d-none");
-   formClose.classList.add("d-none");
-  showTicketClose.classList.remove("d-none");
-  
-    
-    let opcion={
-        "ESTATUS":"CERRADO"
-    };
-    selecEstatus(opcion, click());
-
-});
+//Creamos los botones
 
 btnAbierto.addEventListener("click", function(event){
+
   viewAsideOpenInfo();
+
+  //lo primero que hacen es ocultar todo agregando un d-none a los paneles y despues quita el d-none al panel que quiere mostrar
+
   
   showTicket.classList.remove("d-none");
   formClose.classList.add("d-none");
   showTicketClose.classList.add("d-none");
-    console.log("si me escucho");
+  proceso.classList.add('d-none');
+
+  btnProcesoDnone.classList.remove("d-none");
+
     let opcion={
         "ESTATUS":"ABIERTO"
     };
@@ -33,9 +32,38 @@ btnAbierto.addEventListener("click", function(event){
 
 });
 
+btnPendiente.addEventListener('click', function(event){
+  
+  proceso.classList.remove("d-none");
+  showTicketClose.classList.add("d-none");
+  formClose.classList.add("d-none");
+  showTicket.classList.remove("d-none");
+  btnProcesoDnone.classList.add("d-none")
+  
+   let opcion={
+        "ESTATUS":"PENDIENTE"
+    };
+    selecEstatus(opcion, "PENDIENTE");
+});
+
+btnCerrado.addEventListener("click", function(event){
+   showTicket.classList.add("d-none");
+   formClose.classList.add("d-none");
+  showTicketClose.classList.remove("d-none");
+  
+  
+    
+    let opcion={
+        "ESTATUS":"CERRADO"
+    };
+    selecEstatus(opcion, "CERRADO");
+
+});
+
 
 
 function selecEstatus(opcion, estatus){
+  console.log(estatus);
     fetch("../PHP/selectEstatusTicket.php", {
         method: "POST",
         headers:{
@@ -52,7 +80,7 @@ function selecEstatus(opcion, estatus){
    if(Array.isArray(data)){
     console.log("hola");
     let tbody=document.getElementById("tbody")
-      let trs=document.querySelectorAll("#tbody tr");
+    let trs=document.querySelectorAll("#tbody tr");
       console.log(trs.length);
 
   if(trs.length>0){
@@ -66,11 +94,22 @@ function selecEstatus(opcion, estatus){
     let tr=document.createElement("tr");
     tr.id="tr"+i;
         tr.addEventListener("click", ()=>{
-           if(estatus==="ABIERTO"){
+
+        switch(estatus){
+          case "ABIERTO":
             click(tr.id);
-           }else{
+            break;
+          case "PENDIENTE":
+            clickPendiente(tr.id);
+            break;
+          case "CERRADO":
             clickClose(tr.id);
-           }
+            break;
+          default:
+            click(tr.id);
+            break;
+        }
+           
     });
        
     //trs.push(tr.id);
