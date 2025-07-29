@@ -27,7 +27,7 @@ date_default_timezone_set('America/Mazatlan');
         public $tiempo_Solucion;
         public $mes;
         public $year;
-        public $proceso;
+        public $seguimiento;
 
 
         private function crearFolio(){
@@ -273,16 +273,25 @@ date_default_timezone_set('America/Mazatlan');
             }
         }
 
-        public function ticketPendiente(){
+        public function ticketPendiente($fecha){
             global $conn;
-            $sql="UPDATE tickets SET estatus='PENDIENTE', proceso='$this->proceso' where folio='$this->folio'";
-            $result=$conn->query($sql);
-            if($result===true){
-                  $MENSAGE=["MESSAGE"=>"TICKET PUESTO EN ESTATUS PENDIENTE"];
+            $sqlSE="UPDATE tickets SET estatus='PENDIENTE', proceso='$this->seguimiento' where folio='$this->folio'";
+            $result=$conn->query($sqlSE);
+            $sqlST="INSERT INTO seguimiento(nombre,fecha,Tfolio) values (?,?,?)";
+            $stmt=$conn->prepare($sqlST);
+            $stmt->bind_param("sss", $this->seguimiento, $fecha, $this->folio);
+             if($result === true and $stmt->execute()===true){
+                    $MENSAGE=["MESSAGE"=>"se agrego seguimiento"];
                     echo json_encode($MENSAGE);
-                    
+                    $stmt->close();
                     exit;
-            }
+                }else{
+                    $MENSAGE=["MESSAGE"=>"hubo un problema al hacer el seguimiento"];
+                    echo json_encode($MENSAGE);
+                    $stmt->close();
+                    exit;
+                }
+        
         }
         public function selectEstatusTicketUsuario(){
             $sucursal=$this->obtenerSucursal();
