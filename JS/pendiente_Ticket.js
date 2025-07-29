@@ -15,7 +15,7 @@ btnEstatusPendiente.addEventListener("click", function(event){
         datosE={
                 "folio":folio,
                 "estatus":"PENDIENTE",
-                "proceso":inputProceso
+                "seguimiento":inputProceso
             };
             
             fetch("../PHP/ticket_Pendiente.php",{

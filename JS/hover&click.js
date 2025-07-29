@@ -86,7 +86,7 @@ function clickPendiente(id){
     let problemaAside=document.getElementById("problemaAside");
     let ipEquipoAside=document.getElementById("ipEquipoAside");
     let descripcionAside=document.getElementById("descripcionAside");
-    let procesoAside=document.getElementById("procesoAside");
+    let seguimientoAside=document.getElementById("seguimientoAside");
     
    
         sucursalAside.textContent=data[0]['sucursal'];
@@ -97,7 +97,7 @@ function clickPendiente(id){
         problemaAside.textContent=data[0]['problema'];
         ipEquipoAside.textContent=data[0]['ip_Equipo'];
         descripcionAside.textContent=data[0]['descripcion'];
-        procesoAside.textContent=data[0]['proceso'];
+        seguimientoAside.textContent=data[0]['seguimiento'];
     });
 }
         
