@@ -19,7 +19,6 @@ fetch("../PHP/asideLastInfo.php",{
 })
 .then(res=>res.json())
 .then(data=>{
-    console.log(data);
 
     let sucursalAside=document.getElementById("sucursalAside");
     let folioAside=document.getElementById("folioAside");
@@ -29,7 +28,7 @@ fetch("../PHP/asideLastInfo.php",{
     let problemaAside=document.getElementById("problemaAside");
     let ipEquipoAside=document.getElementById("ipEquipoAside");
     let descripcionAside=document.getElementById("descripcionAside");
-    let seguimientoAside=document.getElementById("seguimientoAside");
+    
     let datos={}
     //console.log(data['folio']);
 
@@ -41,7 +40,7 @@ fetch("../PHP/asideLastInfo.php",{
     problemaAside.textContent=data['problema'];
     ipEquipoAside.textContent=data['ip_Equipo'];
     descripcionAside.textContent=data['descripcion'];
-    seguimientoAside.textContent=data['seguimiento']
+    
 });
     
 }

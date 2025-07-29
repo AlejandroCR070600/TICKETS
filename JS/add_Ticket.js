@@ -87,6 +87,9 @@ function problemaSelect(){
 
 function enviarCorreo(){
     let sucursal=document.getElementById("selectSucursal").value;
+ 
+    
+    
     fetch("../PHP/correo/enviarCorreo.php", {
         method:"POST",
         headers:{

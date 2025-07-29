@@ -1,15 +1,8 @@
-
-
-function mostrar_Seguimiento(){
-
-let folio=document.getElementById("folioAside");
-
-
+function click_Seguimiento(folio){
 let datosE={
-    "folio": folio
+    "folio":folio
 };
-
-fetch("../PHP/tickets_Pendientes/mostrar_Seguimiento.php",{
+fetch("../PHP/tickets_Pendientes/click_Seguimiento.php",{
     method:"POST",
     headers:{
         "Content-Type":"application/json"
@@ -20,7 +13,8 @@ fetch("../PHP/tickets_Pendientes/mostrar_Seguimiento.php",{
 .then(res=>res.json())
 .then(data=>{
     let mostrar_Seguimiento=document.getElementById("mostrar_Seguimiento");
-    console.log(data);
+//    console.log(data);
+    mostrar_Seguimiento.innerHTML="";
 
     for(let i=0;i<data.length;i++){
         let p=document.createElement("p");

@@ -35,6 +35,17 @@ selectChange.addEventListener('change', function(event){
             }
         })
     }else{
+            let removeInput=document.getElementById('inputBuscar');
+            let divChange=document.getElementById('divChange');
+            removeInput.remove();
+       
+            let input=document.createElement('input');
+            input.classList.add('form-control', 'border-primary', 'shadow-sm');
+            input.id="inputBuscar";
+            input.placeholder="Escribe tu búsqueda"
+
+            divChange.appendChild(input);
+          
         
     }
 });

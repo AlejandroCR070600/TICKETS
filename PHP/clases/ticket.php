@@ -71,6 +71,18 @@ date_default_timezone_set('America/Mazatlan');
             }
 
         }
+        private function ultimo_Folio_Pendiente(){
+            global $conn;
+            $sql="SELECT folio from tickets where estatus='PENDIENTE' order by folio desc limit 1";
+            $result=$conn->query($sql);
+            if($result->num_rows>0){
+                $row=$result->fetch_assoc();
+                
+                return $row['folio'];
+                
+            }
+        }
+
 
         public function addTicket(){
             global $conn;
@@ -119,37 +131,6 @@ date_default_timezone_set('America/Mazatlan');
                     $stmt->close();
                     exit;
                 }
-            }
-        }
-        public function asideLastInfo(){
-            global $conn;
-            $sql="SELECT 
-                t.folio,
-                t.fecha_Abierto,
-                t.hora_Abierto,
-                s.nombre AS sucursal,
-                t.usuario,
-                t.telefono,
-                p.nombre AS problema,
-                t.descripcion,
-                t.ip_Equipo,
-                t.estatus
-            FROM tickets t
-            INNER JOIN sucursal s ON t.sucursal = s.id
-            INNER JOIN problema p ON t.problema = p.id
-            WHERE estatus='$this->estatus'
-            ORDER BY t.folio DESC
-            LIMIT 1
-
-            ";
-            $result=$conn->query($sql);
-            $datosE=[];
-
-            if($result->num_rows>0){
-                $row=$result->fetch_assoc();
-                $datosE=$row;
-
-                echo json_encode($datosE);
             }
         }
         public function buscarTickets($columna, $buscar){
@@ -220,7 +201,7 @@ date_default_timezone_set('America/Mazatlan');
                 t.descripcion,
                 t.ip_Equipo,
                 t.estatus,
-                t.seguimiento
+                t.proceso
             FROM tickets t
             INNER JOIN sucursal s ON t.sucursal = s.id
             INNER JOIN problema p ON t.problema = p.id
@@ -242,8 +223,7 @@ date_default_timezone_set('America/Mazatlan');
             }
 
        
-        
-            public function closeTicket(){
+        public function closeTicket(){
             global $conn;
             $this->tiempo_Solucion=$this->getTimeOfClosing();
             $sql="UPDATE tickets SET falla_Real=?, 
@@ -304,13 +284,11 @@ date_default_timezone_set('America/Mazatlan');
             }
         }
 
-        public function ticketPendiente($fecha){
+        public function ticketPendiente($fe){
             global $conn;
-
             $sqlSE="UPDATE tickets SET estatus='PENDIENTE', proceso='$this->seguimiento' where folio='$this->folio'";
-            $sqlST="INSERT INTO seguimiento(nombre,fecha,Tfolio) values (?,?,?)";
-            
             $result=$conn->query($sqlSE);
+            $sqlST="INSERT INTO seguimiento(nombre,fecha,Tfolio) values (?,?,?)";
             $stmt=$conn->prepare($sqlST);
             $stmt->bind_param("sss", $this->seguimiento, $fecha, $this->folio);
              if($result === true and $stmt->execute()===true){
@@ -326,6 +304,7 @@ date_default_timezone_set('America/Mazatlan');
                 }
         
         }
+
         public function selectEstatusTicketUsuario(){
             $sucursal=$this->obtenerSucursal();
             global $conn;
@@ -404,6 +383,7 @@ date_default_timezone_set('America/Mazatlan');
 
 
         }
+
         public function asieLIU(){
             global $conn;
 
@@ -436,56 +416,79 @@ date_default_timezone_set('America/Mazatlan');
                 echo json_encode($datosE);
             }
         }
-
-        public function asideLIC(){
+        public function asideLastInfo(){
             global $conn;
-            $sql="SELECT
-                t.folio,
-                t.usuario,
-                t.telefono,
-                t.descripcion,
-                t.ip_Equipo,
-                t.falla_Real,
-                t.causa,
-                t.recomendacion,
-                t.estatus,
-                t.modo,
-                t.turno,
-                t.error_Sucursal,
-                t.tiempo_Solucion,
-                t.mes,
-                t.year,
-                t.fecha_Abierto,
-                t.hora_Abierto,
-                t.fecha_Cerrado,
-                t.hora_Cerrado,
 
-                s.nombre AS sucursal,
-                a.nombre AS area,
-                e.nombre AS equipo,
-                u.nombre AS admin,
-                p.nombre AS problema
+            $sucursal=$this->obtenerSucursal();
+                    $sql="SELECT 
+            t.folio,
+            t.fecha_Abierto,
+            t.hora_Abierto,
+            s.nombre AS sucursal,
+            t.usuario,
+            t.telefono,
+            p.nombre AS problema,
+            t.descripcion,
+            t.ip_Equipo,
+            t.estatus
+            FROM tickets t
+            INNER JOIN sucursal s ON t.sucursal = s.id
+            INNER JOIN problema p ON t.problema = p.id where estatus='$this->estatus'
+            ORDER BY t.folio DESC
+            LIMIT 1
 
-                FROM tickets t 
-                INNER JOIN sucursal s ON t.sucursal = s.id
-                INNER JOIN area a ON t.area = a.id
-                INNER JOIN equipo e ON t.equipo = e.id
-                INNER JOIN admin u ON t.admin = u.id
-                INNER JOIN problema p ON t.problema = p.id where estatus='CERRADO'
-                ORDER BY t.folio limit 1
+            ";
+            $result=$conn->query($sql);
+            $datosE=[];
 
-                ";
-                $result=$conn->query($sql);
-                $datosE=[];
-                if($result->num_rows>0){
-                    while($row=$result->fetch_assoc()){
-                        $datosE[]=$row;
+            if($result->num_rows>0){
+                $row=$result->fetch_assoc();
+                $datosE=$row;
 
-                    }
-                    echo json_encode($datosE);
+                echo json_encode($datosE);
+            }
+        }
+          public function show_Seguimiento_Click(){
+            global $conn;
+        
+            $sql="select * from seguimiento where tfolio='$this->folio'";
+            $result=$conn->query($sql);
+            $datos=[];
+               if($result->num_rows>0){
+                
+                while($row=$result->fetch_assoc()){
+                    $datos[]=$row['nombre'];
                     
-
+                    
                 }
+                echo json_encode($datos);
+            }else{
+                $datos[ "MESSAGE"]="no hay tickets";
+                echo json_encode($datos);
+            }
+        }
+
+        public function show_Seguimiento(){
+            global $conn;
+            if(empty($this->folio)){
+                $this->folio=$this->ultimo_Folio_Pendiente();
+            }
+        
+            $sql="select * from seguimiento where tfolio='$this->folio'";
+            $result=$conn->query($sql);
+            $datos=[];
+               if($result->num_rows>0){
+                
+                while($row=$result->fetch_assoc()){
+                    $datos[]=$row['nombre'];
+                    
+                    
+                }
+                echo json_encode($datos);
+            }else{
+                $datos[ "MESSAGE"]="no hay tickets";
+                echo json_encode($datos);
+            }
         }
     }
 ?>

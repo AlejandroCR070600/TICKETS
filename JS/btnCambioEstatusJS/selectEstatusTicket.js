@@ -34,6 +34,7 @@ btnAbierto.addEventListener("click", function(event){
 
 btnPendiente.addEventListener('click', function(event){
   viewAsideOpenInfo("PENDIENTE");
+  mostrar_Seguimiento();
   
   
   proceso.classList.remove("d-none");

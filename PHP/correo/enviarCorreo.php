@@ -33,7 +33,7 @@ require __DIR__ . '/../../vendor/autoload.php';
     if($result->num_rows>0){
         $row=$result->fetch_assoc();
         $datos[]=$row;
-        enviarCorreo($datos[0]['correo'],$datos[0]['claveApp']);
+        enviarCorreo($datos[0]['correo'],$datos[0]['claveApp'], $sucursal);
     }
     
  }
@@ -42,7 +42,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 //echo enviarCorreo('xxalinestarxx@gmail.com', 'samu joqp qany ajee');
 
-function enviarCorreo($correo,$contraseña){
+function enviarCorreo($correo,$contraseña, $sucursal){
 $mail = new PHPMailer(true);
 
 try {
@@ -61,7 +61,7 @@ try {
 
     // Contenido del mensaje
     $mail->isHTML(true);
-    $mail->Subject = 'Asunto del correo';
+    $mail->Subject = 'SUCURSAL: '.$sucursal.", a ingresado un TICKET";
     $mail->Body    = '<h1>Hola!</h1><p>Este es un mensaje enviado con PHPMailer y Gmail.</p>';
     $mail->AltBody = 'Este es el mensaje en texto plano para clientes que no soportan HTML';
 

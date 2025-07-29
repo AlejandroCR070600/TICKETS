@@ -65,6 +65,7 @@ function clickPendiente(id){
     });
 
     let datosE={'folio': asideValues[1], "estatus": "PENDIENTE"};
+    click_Seguimiento( asideValues[1]);
     
             console.log(asideValues);
 
@@ -86,7 +87,7 @@ function clickPendiente(id){
     let problemaAside=document.getElementById("problemaAside");
     let ipEquipoAside=document.getElementById("ipEquipoAside");
     let descripcionAside=document.getElementById("descripcionAside");
-    let seguimientoAside=document.getElementById("seguimientoAside");
+    
     
    
         sucursalAside.textContent=data[0]['sucursal'];
@@ -97,7 +98,7 @@ function clickPendiente(id){
         problemaAside.textContent=data[0]['problema'];
         ipEquipoAside.textContent=data[0]['ip_Equipo'];
         descripcionAside.textContent=data[0]['descripcion'];
-        seguimientoAside.textContent=data[0]['seguimiento'];
+        
     });
 }
         
